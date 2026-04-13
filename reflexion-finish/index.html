@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reflexion Finish — Professional Painting & Decorating NSW</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--c:#C95E5A;--s:#7794BE;--y:#FEE300;--b:#000;--w:#fff;--l:#F7F6F3;--g:#EDEAE4;--t:#141414;--m:#717170;--ff:'DM Sans',sans-serif;--fh:'Cormorant Garamond',Georgia,serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--w);color:var(--t);overflow-x:hidden;font-weight:400;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+
+/* ── NAV ─────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 60px;height:76px;display:flex;align-items:center;justify-content:space-between;transition:all .35s}
+nav.scrolled{background:rgba(255,255,255,.97);border-bottom:1px solid rgba(0,0,0,.07);box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.brand-logo{display:inline-flex;align-items:center;text-decoration:none}
+.brand-name{font-size:24px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;padding:4px 2px;line-height:1;background:linear-gradient(to bottom,#3dcece 0%,#3dcece 33%,#eddf28 33%,#eddf28 65%,#e04e6a 65%,#e04e6a 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:34px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.75);letter-spacing:.03em;transition:color .2s}
+nav.scrolled .nav-links a{color:var(--m)}
+.nav-links a:hover{color:var(--y)!important}
+.nav-actions{display:flex;align-items:center;gap:16px}
+.nav-phone{font-size:13px;font-weight:600;color:rgba(255,255,255,.45);transition:color .35s}
+nav.scrolled .nav-phone{color:var(--m)}
+.nav-cta{background:var(--c);color:var(--w);padding:10px 22px;border-radius:4px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s}
+.nav-cta:hover{background:#b04e4a;transform:translateY(-1px)}
+
+/* ── HERO ─────────────────────────────────────────── */
+.hero{height:100vh;min-height:700px;position:relative;display:flex;align-items:center;overflow:hidden;background:linear-gradient(152deg,#0d0d0d 0%,#1a1a1a 40%,#111 70%,#080808 100%)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 65% at 80% 38%,rgba(201,94,90,.18) 0%,transparent 55%),radial-gradient(ellipse 50% 60% at 12% 72%,rgba(119,148,190,.14) 0%,transparent 50%),radial-gradient(ellipse 40% 35% at 90% 85%,rgba(254,227,0,.06) 0%,transparent 45%)}
+.hero::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(177deg,transparent 0px,transparent 36px,rgba(255,255,255,.008) 36px,rgba(255,255,255,.008) 37px),repeating-linear-gradient(90deg,transparent 0px,transparent 80px,rgba(255,255,255,.005) 80px,rgba(255,255,255,.005) 81px)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(100deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.65) 40%,rgba(0,0,0,.25) 75%,rgba(0,0,0,.1) 100%)}
+.hero-vignette{position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 100%)}
+.hero-grain{position:absolute;inset:0;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px}
+.hero-inner{position:relative;z-index:2;max-width:1400px;width:100%;margin:0 auto;padding:0 60px}
+.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--y);margin-bottom:26px;display:flex;align-items:center;gap:14px}
+.hero-eyebrow::before{content:'';display:block;width:44px;height:1.5px;background:var(--y)}
+.hero-h{font-size:clamp(44px,6.5vw,92px);font-weight:900;line-height:.97;letter-spacing:-.04em;color:var(--w);margin-bottom:16px}
+.hero-h span{color:var(--c)}
+.hero-tagline{font-size:clamp(18px,2.2vw,28px);font-weight:300;color:rgba(255,255,255,.55);margin-bottom:40px;letter-spacing:.01em;line-height:1.5}
+.hero-tagline em{color:rgba(255,255,255,.85);font-style:normal;font-weight:500}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px}
+.btn-p{background:var(--c);color:var(--w);padding:16px 36px;border:none;border-radius:4px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .25s;display:inline-flex;align-items:center;gap:10px}
+.btn-p:hover{background:#b04e4a;transform:translateY(-2px)}
+.btn-p svg{transition:transform .2s}
+.btn-p:hover svg{transform:translateX(4px)}
+.btn-o{background:transparent;color:var(--w);padding:16px 36px;border:1px solid rgba(255,255,255,.25);border-radius:4px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .25s}
+.btn-o:hover{border-color:var(--w);background:rgba(255,255,255,.07)}
+.hero-trust{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.htrust-item{display:flex;align-items:center;gap:9px;font-size:12px;color:rgba(255,255,255,.45);letter-spacing:.04em}
+.htrust-dot{width:5px;height:5px;border-radius:50%;background:var(--c);flex-shrink:0}
+.htrust-item.blue .htrust-dot{background:var(--s)}
+.htrust-item.yel .htrust-dot{background:var(--y)}
+.hero-stats-bar{position:absolute;bottom:0;left:0;right:0;z-index:3;background:rgba(0,0,0,.45);border-top:1px solid rgba(255,255,255,.07);backdrop-filter:blur(12px);display:flex;justify-content:center}
+.hstat-item{padding:18px 52px;border-right:1px solid rgba(255,255,255,.06);text-align:center}
+.hstat-item:last-child{border-right:none}
+.hstat-n{font-size:28px;font-weight:900;color:var(--w);letter-spacing:-.04em;line-height:1}
+.hstat-n sup{font-size:12px;color:var(--c)}
+.hstat-item:nth-child(3) .hstat-n{color:var(--y)}
+.hstat-item:nth-child(3) .hstat-n sup{color:rgba(254,227,0,.6)}
+.hstat-l{font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.15em;text-transform:uppercase;margin-top:5px}
+.hero-scroll{position:absolute;bottom:96px;left:60px;z-index:3;display:flex;align-items:center;gap:14px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+.scroll-line{width:44px;height:1px;background:linear-gradient(to right,rgba(255,255,255,.3),transparent)}
+
+/* ── ABOUT ────────────────────────────────────────── */
+.about{padding:120px 60px;background:var(--l)}
+.sec-inner{max-width:1400px;margin:0 auto}
+.about-grid{display:grid;grid-template-columns:1fr 1.08fr;gap:96px;align-items:start}
+.sec-tag{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--s);margin-bottom:18px}
+.about-h{font-size:clamp(32px,3.5vw,52px);font-weight:900;letter-spacing:-.04em;line-height:1.06;color:var(--b);margin-bottom:8px}
+.about-h em{color:var(--c);font-style:normal}
+.about-sub{font-size:17px;font-weight:300;color:var(--m);line-height:1.75;margin-bottom:32px;border-left:3px solid var(--y);padding-left:18px}
+.about-p{font-size:15px;line-height:1.85;color:var(--m);margin-bottom:18px}
+.about-p strong{color:var(--t);font-weight:600}
+.about-creds{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+.acred{display:inline-flex;align-items:center;gap:8px;background:var(--w);border:1px solid var(--g);border-radius:4px;padding:10px 16px;font-size:12px;font-weight:600;color:var(--t);letter-spacing:.03em;transition:all .25s}
+.acred:hover{border-color:var(--s);color:var(--s)}
+.acred-dot{width:7px;height:7px;border-radius:50%;background:var(--s);flex-shrink:0}
+.acred-dot.c{background:var(--c)}
+.acred-dot.y{background:var(--y)}
+.about-right{display:flex;flex-direction:column;gap:20px}
+.about-img-main{border-radius:14px;overflow:hidden;height:420px;position:relative;background:linear-gradient(145deg,#1a1a1a,#2a2a2a)}
+.about-img-main img{width:100%;height:100%;object-fit:cover;display:block;opacity:.92}
+.about-img-badge{position:absolute;bottom:20px;left:20px;background:var(--b);color:var(--w);padding:14px 20px;border-radius:8px;border-left:3px solid var(--c)}
+.about-img-badge strong{display:block;font-size:22px;font-weight:900;color:var(--c);line-height:1;letter-spacing:-.03em}
+.about-img-badge span{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.1em;text-transform:uppercase;margin-top:3px;display:block}
+.about-img-sec{border-radius:14px;overflow:hidden;height:200px;position:relative;background:linear-gradient(145deg,#162a42,#0a1826);flex-shrink:0}
+.about-img-sec img{width:100%;height:100%;object-fit:cover;display:block;opacity:.88}
+.about-img-sec-label{position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(to top,rgba(0,0,0,.75),transparent);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.about-svc-banner{margin-top:20px;border-radius:14px;overflow:hidden;height:260px;position:relative;background:linear-gradient(135deg,#0a0a0a,#1e1e1e)}
+.about-svc-banner img{width:100%;height:100%;object-fit:cover;display:block;opacity:.85}
+.about-svc-banner-overlay{position:absolute;inset:0;background:linear-gradient(100deg,rgba(0,0,0,.65) 0%,rgba(0,0,0,.2) 60%,transparent 100%)}
+.about-svc-banner-content{position:absolute;inset:0;display:flex;align-items:center;padding:32px 36px;gap:32px}
+.about-svc-banner-text h3{font-size:22px;font-weight:900;color:var(--w);letter-spacing:-.03em;line-height:1.15;margin-bottom:8px}
+.about-svc-banner-text p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.65;max-width:320px}
+.about-svc-stats{display:flex;gap:24px;flex-shrink:0}
+.abs-stat{text-align:center}
+.abs-stat strong{display:block;font-size:28px;font-weight:900;color:var(--w);letter-spacing:-.04em;line-height:1}
+.abs-stat strong sup{font-size:13px;color:var(--c)}
+.abs-stat span{font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.14em;text-transform:uppercase;margin-top:4px;display:block}
+
+/* ── SERVICES ─────────────────────────────────────── */
+.products{padding:120px 60px;background:var(--w)}
+.sec-head{text-align:center;margin-bottom:72px}
+.sec-title{font-size:clamp(34px,3.8vw,56px);font-weight:900;letter-spacing:-.04em;line-height:1.05}
+.sec-sub{font-size:16px;color:var(--m);margin-top:16px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.pc{border-radius:14px;overflow:hidden;cursor:pointer;transition:all .3s;background:var(--l);border:1px solid var(--g)}
+.pc:hover{transform:translateY(-10px);box-shadow:0 28px 64px rgba(0,0,0,.12);border-color:transparent}
+.pc-img{height:240px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.pc-p1 .pc-img{background:linear-gradient(145deg,#1a1a1a,#2e2e2e)}
+.pc-p2 .pc-img{background:linear-gradient(145deg,#0a1826,#162a42)}
+.pc-p3 .pc-img{background:linear-gradient(145deg,#1f0e0e,#3d1c1c)}
+.pc-p4 .pc-img{background:linear-gradient(145deg,#0e1f0e,#1c3d1c)}
+.pc-p5 .pc-img{background:linear-gradient(145deg,#1a1810,#2e2c1a)}
+.pc-p6 .pc-img{background:linear-gradient(145deg,#0e0e1f,#1c1c3d)}
+.pc-img::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 14px,rgba(255,255,255,.03) 14px,rgba(255,255,255,.03) 28px)}
+.pc-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(to top,rgba(0,0,0,.7),transparent)}
+.pc-badge{position:absolute;top:16px;right:16px;z-index:2;background:var(--c);color:var(--w);font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:3px}
+.pc-p1 .pc-badge{background:var(--y);color:#111}
+.pc-p2 .pc-badge,.pc-p4 .pc-badge,.pc-p6 .pc-badge{background:var(--s)}
+.pc-visual{position:relative;z-index:1}
+.pc-overlay{position:absolute;bottom:0;left:0;right:0;padding:20px;z-index:2}
+.pc-name{font-size:18px;font-weight:800;color:var(--w);letter-spacing:-.03em;margin-bottom:4px;line-height:1.2}
+.pc-cat{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.12em;text-transform:uppercase}
+.pc-body{padding:22px}
+.pc-bens{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.pben{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--m)}
+.pben::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--c);flex-shrink:0}
+.pc-p2 .pben::before,.pc-p4 .pben::before,.pc-p6 .pben::before{background:var(--s)}
+.pc-link{font-size:12px;font-weight:700;color:var(--c);text-transform:uppercase;letter-spacing:.08em;display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.pc-p2 .pc-link,.pc-p4 .pc-link,.pc-p6 .pc-link{color:var(--s)}
+.pc-p2 .pc-link svg,.pc-p4 .pc-link svg,.pc-p6 .pc-link svg{stroke:var(--s)}
+.pc:hover .pc-link{gap:10px}
+.pc-link svg{width:12px;height:12px;stroke:var(--c);fill:none;stroke-width:2.5}
+
+/* ── PROCESS ──────────────────────────────────────── */
+.process{padding:120px 60px;background:#080808;position:relative;overflow:hidden}
+.process-bg{position:absolute;inset:0;background:radial-gradient(ellipse 100% 60% at 50% 100%,rgba(119,148,190,.07) 0%,transparent 60%)}
+.process .sec-tag{color:var(--s)}
+.process .sec-title{color:var(--w)}
+.process .sec-sub{color:rgba(255,255,255,.35)}
+.proc-steps{display:grid;grid-template-columns:repeat(4,1fr);position:relative;margin-top:72px}
+.proc-line{position:absolute;top:48px;left:calc(12.5% + 24px);right:calc(12.5% + 24px);height:1px;background:linear-gradient(to right,var(--c),var(--y) 50%,var(--s))}
+.pstep{text-align:center;padding:0 20px;position:relative;z-index:1}
+.pstep-n{width:96px;height:96px;border-radius:50%;background:#111;border:1px solid rgba(201,94,90,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;font-size:28px;font-weight:900;color:var(--c);transition:all .35s;position:relative}
+.pstep-n::after{content:'';position:absolute;inset:6px;border-radius:50%;border:1px solid rgba(201,94,90,.1);transition:all .35s}
+.pstep:nth-child(2) .pstep-n,.pstep:nth-child(4) .pstep-n{color:var(--s);border-color:rgba(119,148,190,.35)}
+.pstep:nth-child(2) .pstep-n::after,.pstep:nth-child(4) .pstep-n::after{border-color:rgba(119,148,190,.1)}
+.pstep:hover .pstep-n{background:var(--c);color:var(--w);border-color:var(--c);box-shadow:0 0 40px rgba(201,94,90,.3)}
+.pstep:nth-child(2):hover .pstep-n,.pstep:nth-child(4):hover .pstep-n{background:var(--s);border-color:var(--s);box-shadow:0 0 40px rgba(119,148,190,.25)}
+.pstep-title{font-size:17px;font-weight:800;color:var(--w);margin-bottom:14px;letter-spacing:-.02em}
+.pstep-desc{font-size:13px;color:rgba(255,255,255,.4);line-height:1.75}
+
+/* ── GALLERY ──────────────────────────────────────── */
+.gallery{padding:120px 60px;background:var(--l)}
+.gal-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;margin-top:72px}
+.ba-wrap{border-radius:14px;overflow:hidden;position:relative;height:440px;cursor:col-resize;user-select:none}
+.ba-before{position:absolute;inset:0;background:linear-gradient(135deg,#7a6a5a 0%,#5a4a3a 40%,#8a7a6a 100%)}
+.ba-before::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(0,0,0,.06) 8px,rgba(0,0,0,.06) 16px)}
+.ba-after{position:absolute;inset:0;clip-path:inset(0 50% 0 0);transition:clip-path .05s linear}
+.ba-after-inner{position:absolute;inset:0;background:linear-gradient(135deg,var(--c) 0%,#e87a75 40%,var(--s) 100%)}
+.ba-after-inner::after{content:'';position:absolute;inset:0;background:repeating-conic-gradient(rgba(255,255,255,.06) 0 90deg,transparent 90deg 180deg) 0 0/16px 16px}
+.ba-div{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--w);transform:translateX(-50%);z-index:10;pointer-events:none}
+.ba-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--w);display:flex;align-items:center;justify-content:center;z-index:11;box-shadow:0 4px 20px rgba(0,0,0,.3);pointer-events:none}
+.ba-handle svg{width:20px;height:20px;stroke:#333;fill:none;stroke-width:2}
+.ba-lbl{position:absolute;bottom:18px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:3px;z-index:12;pointer-events:none}
+.ba-lbl-b{left:16px;background:rgba(0,0,0,.65);color:var(--w)}
+.ba-lbl-a{right:16px;background:var(--s)}
+.ba-title{position:absolute;top:20px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.7);background:rgba(0,0,0,.4);padding:6px 16px;border-radius:20px;z-index:12;white-space:nowrap;pointer-events:none}
+.gal-right{display:flex;flex-direction:column;gap:16px}
+.tc{border-radius:12px;height:100%;min-height:100px;position:relative;overflow:hidden;flex:1;display:flex;align-items:flex-end;padding:18px}
+.tc1{background:linear-gradient(135deg,#b0a090,#7a6a5a)}
+.tc2{background:linear-gradient(135deg,#5a7a9e,#3a5a7e)}
+.tc3{background:linear-gradient(135deg,var(--c),#8a3a36)}
+.tc4{background:linear-gradient(135deg,#2a2a2a,#111)}
+.tc::before{content:'';position:absolute;inset:0;background:repeating-conic-gradient(rgba(255,255,255,.04) 0 90deg,transparent 90deg 180deg) 0 0/12px 12px}
+.tc-lbl{font-size:11px;font-weight:700;color:rgba(255,255,255,.8);letter-spacing:.1em;text-transform:uppercase;position:relative;z-index:1}
+
+/* ── CTA ──────────────────────────────────────────── */
+.fcta{padding:140px 60px;background:linear-gradient(160deg,#eef3fa 0%,#f5eeed 50%,#fdfbf0 100%);text-align:center;position:relative;overflow:hidden}
+.fcta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 65% at 50% 50%,rgba(254,227,0,.07) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 10% 100%,rgba(119,148,190,.08) 0%,transparent 50%),radial-gradient(ellipse 40% 50% at 90% 0%,rgba(201,94,90,.06) 0%,transparent 50%)}
+.fcta-h{font-size:clamp(40px,5.5vw,76px);font-weight:900;letter-spacing:-.05em;line-height:.96;margin-bottom:24px;position:relative;z-index:1}
+.fcta-h em{font-style:normal;display:block;-webkit-text-fill-color:transparent;background:linear-gradient(90deg,var(--c),var(--y));-webkit-background-clip:text;background-clip:text}
+.fcta-p{font-size:17px;color:var(--m);max-width:480px;margin:0 auto 48px;line-height:1.75;position:relative;z-index:1}
+.fcta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.fcta-tag{font-size:11px;color:rgba(0,0,0,.3);letter-spacing:.15em;text-transform:uppercase;margin-top:32px;position:relative;z-index:1}
+
+/* ── FOOTER ───────────────────────────────────────── */
+footer{background:#060606;padding:72px 60px 40px;border-top:1px solid rgba(255,255,255,.04)}
+.ft-inner{max-width:1400px;margin:0 auto}
+.ft-top{display:grid;grid-template-columns:2fr 1.4fr 1fr 1.2fr;gap:56px;margin-bottom:64px}
+.ft-col h5{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:20px}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ft-col a{font-size:13px;color:rgba(255,255,255,.45);transition:color .2s;line-height:1.5}
+.ft-col a:hover{color:var(--s)}
+.ft-tagline{font-size:13px;color:rgba(255,255,255,.3);line-height:1.7;max-width:230px;margin-bottom:0}
+.dulux-badge{display:inline-flex;flex-direction:column;width:150px;border-radius:6px;overflow:hidden;margin-top:20px}
+.dulux-top{background:#1b2d5c;color:#fff;font-size:22px;font-weight:900;font-style:italic;padding:10px 14px 8px;text-align:center;letter-spacing:.01em;line-height:1}
+.dulux-top sup{font-size:11px;font-style:normal;vertical-align:super}
+.dulux-bot{background:#0077bb;color:#fff;font-size:18px;font-weight:600;font-style:italic;padding:8px 14px 10px;text-align:center;letter-spacing:.02em;line-height:1}
+.ft-contact p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.9}
+.ft-contact strong{color:rgba(255,255,255,.65);display:block;font-size:12px;letter-spacing:.04em;text-transform:uppercase;margin-top:12px;margin-bottom:1px}
+.ft-bottom{border-top:1px solid rgba(255,255,255,.04);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:gap}
+.ft-copy{font-size:11px;color:rgba(255,255,255,.2)}
+.ft-reg{display:flex;gap:24px}
+.ft-reg span{font-size:11px;color:rgba(255,255,255,.2);letter-spacing:.04em}
+
+/* ── SCROLL REVEAL ────────────────────────────────── */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .75s cubic-bezier(.4,0,.2,1),transform .75s cubic-bezier(.4,0,.2,1)}
+.rv.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* ── RESPONSIVE ───────────────────────────────────── */
+@media(max-width:1200px){.about-grid{grid-template-columns:1fr;gap:56px}.gal-grid{grid-template-columns:1fr}}
+@media(max-width:1024px){nav,.hero-inner,.about,.products,.process,.gallery,.fcta,footer{padding-left:32px!important;padding-right:32px!important}.prod-grid{grid-template-columns:1fr 1fr}.proc-steps{grid-template-columns:1fr 1fr}.proc-line{display:none}.ft-top{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:768px){.nav-links,.nav-actions{display:none}.prod-grid{grid-template-columns:1fr}.proc-steps{grid-template-columns:1fr}.about-cards{grid-template-columns:1fr}.gal-right{flex-direction:row;flex-wrap:wrap}.tc{flex:1;min-width:calc(50% - 8px)}.ft-top{grid-template-columns:1fr}.hero-stats-bar{display:none}}
+</style>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">
+    <a class="brand-logo" href="#home"><span class="brand-name">REFLEXION FINISH</span></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#products">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact Us</a></li>
+  </ul>
+  <div class="nav-actions">
+    <span class="nav-phone">0411 353 589</span>
+    <button class="nav-cta">Get a Quote</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-image" id="heroBg">
+  <div class="hero-canvas">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow"><feGaussianBlur stdDeviation="18" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="soft"><feGaussianBlur stdDeviation="6"/></filter>
+        <filter id="vsoft"><feGaussianBlur stdDeviation="3"/></filter>
+        <filter id="grain2"><feTurbulence type="fractalNoise" baseFrequency="0.62" numOctaves="4" stitchTiles="stitch" result="noise"/><feColorMatrix type="saturate" values="0" in="noise" result="gray"/><feBlend in="SourceGraphic" in2="gray" mode="multiply" result="blend"/><feComponentTransfer in="blend"><feFuncA type="linear" slope="1"/></feComponentTransfer></filter>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#c8d8e8"/>
+          <stop offset="60%" stop-color="#dde8f0"/>
+          <stop offset="100%" stop-color="#e8eff5"/>
+        </linearGradient>
+        <linearGradient id="snowGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e8eef2"/>
+          <stop offset="100%" stop-color="#d0dce6"/>
+        </linearGradient>
+        <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#b8b0a4"/>
+          <stop offset="100%" stop-color="#8a847a"/>
+        </linearGradient>
+        <linearGradient id="ceilGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e8e8e8"/>
+          <stop offset="100%" stop-color="#c8c8c8"/>
+        </linearGradient>
+        <linearGradient id="panelGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#2a2a2a"/>
+          <stop offset="100%" stop-color="#1a1a1a"/>
+        </linearGradient>
+        <linearGradient id="colGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#1e1e1e"/>
+          <stop offset="40%" stop-color="#2e2e2e"/>
+          <stop offset="100%" stop-color="#1a1a1a"/>
+        </linearGradient>
+        <linearGradient id="overLay" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#000" stop-opacity=".82"/>
+          <stop offset="38%" stop-color="#000" stop-opacity=".52"/>
+          <stop offset="65%" stop-color="#000" stop-opacity=".18"/>
+          <stop offset="100%" stop-color="#000" stop-opacity=".06"/>
+        </linearGradient>
+        <linearGradient id="botFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#000" stop-opacity=".65"/>
+        </linearGradient>
+        <clipPath id="sceneClip"><rect width="1440" height="900"/></clipPath>
+      </defs>
+      <g clip-path="url(#sceneClip)">
+
+        <!-- ── CEILING ─────────────────────────────── -->
+        <!-- Ceiling panel base (white/light grey slats) -->
+        <rect x="0" y="0" width="1440" height="200" fill="url(#ceilGrad)"/>
+        <!-- Ceiling slat lines (horizontal ribbing going in perspective) -->
+        <line x1="0" y1="22" x2="1440" y2="22" stroke="#b0b0b0" stroke-width="1.2" opacity=".5"/>
+        <line x1="0" y1="44" x2="1440" y2="44" stroke="#b0b0b0" stroke-width="1.2" opacity=".5"/>
+        <line x1="0" y1="66" x2="1440" y2="66" stroke="#b0b0b0" stroke-width="1.2" opacity=".45"/>
+        <line x1="0" y1="88" x2="1440" y2="88" stroke="#b0b0b0" stroke-width="1" opacity=".4"/>
+        <line x1="0" y1="110" x2="1440" y2="110" stroke="#b0b0b0" stroke-width="1" opacity=".35"/>
+        <line x1="0" y1="132" x2="1440" y2="132" stroke="#b0b0b0" stroke-width="1" opacity=".3"/>
+        <line x1="0" y1="154" x2="1440" y2="154" stroke="#aaa" stroke-width="1" opacity=".25"/>
+        <line x1="0" y1="175" x2="1440" y2="175" stroke="#aaa" stroke-width="1" opacity=".2"/>
+
+        <!-- Dark structural ceiling beams (diagonal perspective) -->
+        <polygon points="0,0 120,0 90,195 -30,195" fill="#1e1e1e"/>
+        <polygon points="200,0 340,0 320,195 180,195" fill="#202020"/>
+        <polygon points="490,0 620,0 605,195 475,195" fill="#1e1e1e"/>
+        <polygon points="790,0 910,0 900,195 780,195" fill="#202020"/>
+        <polygon points="1090,0 1200,0 1195,195 1085,195" fill="#1e1e1e"/>
+        <polygon points="1380,0 1440,0 1440,195 1375,195" fill="#202020"/>
+        <!-- Beam highlights -->
+        <polygon points="0,0 10,0 8,195 -2,195" fill="#3a3a3a" opacity=".5"/>
+        <polygon points="200,0 210,0 198,195 188,195" fill="#3a3a3a" opacity=".5"/>
+
+        <!-- ── WINDOW WALL BACKGROUND ──────────────── -->
+        <!-- Sky visible through windows -->
+        <rect x="0" y="195" width="1440" height="520" fill="url(#skyGrad)"/>
+
+        <!-- Distant treeline -->
+        <!-- Far trees (muted, snowy) -->
+        <g opacity=".55" filter="url(#soft)">
+          <rect x="80" y="390" width="18" height="130" fill="#5a6e5a"/>
+          <polygon points="89,310 60,420 118,420" fill="#4a5e4a"/>
+          <polygon points="89,340 65,420 113,420" fill="#526252"/>
+          <rect x="160" y="400" width="14" height="120" fill="#5a6e5a"/>
+          <polygon points="167,330 143,415 191,415" fill="#4a5e4a"/>
+          <rect x="250" y="405" width="12" height="115" fill="#5a6e5a"/>
+          <polygon points="256,350 236,418 276,418" fill="#4a5e4a"/>
+          <rect x="330" y="395" width="16" height="125" fill="#5a6a5a"/>
+          <polygon points="338,320 312,410 364,410" fill="#4a5e4a"/>
+          <rect x="420" y="400" width="13" height="120" fill="#5a6e5a"/>
+          <polygon points="426,345 404,415 448,415" fill="#4a5e4a"/>
+          <rect x="520" y="395" width="15" height="125" fill="#526252"/>
+          <polygon points="527,325 503,410 551,410" fill="#4a5e4a"/>
+          <rect x="620" y="402" width="12" height="118" fill="#5a6e5a"/>
+          <polygon points="626,348 605,415 647,415" fill="#4a5e4a"/>
+          <rect x="720" y="398" width="14" height="122" fill="#526252"/>
+          <polygon points="727,330 705,412 749,412" fill="#4a5e4a"/>
+          <rect x="820" y="400" width="13" height="120" fill="#5a6e5a"/>
+          <polygon points="826,342 805,415 847,415" fill="#4a5e4a"/>
+          <rect x="920" y="395" width="15" height="125" fill="#5a6e5a"/>
+          <polygon points="927,322 904,410 950,410" fill="#4a5e4a"/>
+          <rect x="1020" y="400" width="12" height="120" fill="#526252"/>
+          <polygon points="1026,346 1006,415 1046,415" fill="#4a5e4a"/>
+          <rect x="1120" y="395" width="16" height="125" fill="#5a6a5a"/>
+          <polygon points="1128,328 1104,410 1152,410" fill="#4a5e4a"/>
+          <rect x="1230" y="398" width="14" height="122" fill="#5a6e5a"/>
+          <polygon points="1237,335 1215,412 1259,412" fill="#4a5e4a"/>
+          <rect x="1340" y="400" width="13" height="120" fill="#5a6e5a"/>
+          <polygon points="1346,344 1325,415 1367,415" fill="#4a5e4a"/>
+        </g>
+
+        <!-- Snow ground (snowy landscape) -->
+        <rect x="0" y="490" width="1440" height="225" fill="url(#snowGrad)" opacity=".88"/>
+        <!-- Snow surface undulation -->
+        <path d="M0,505 Q180,495 360,510 Q540,525 720,508 Q900,492 1080,512 Q1260,530 1440,510 L1440,715 L0,715 Z" fill="#dce8f0" opacity=".6"/>
+        <!-- Snow sparkle dots -->
+        <g opacity=".4">
+          <circle cx="200" cy="540" r="1.5" fill="white"/>
+          <circle cx="450" cy="525" r="1" fill="white"/>
+          <circle cx="680" cy="545" r="1.5" fill="white"/>
+          <circle cx="900" cy="530" r="1" fill="white"/>
+          <circle cx="1100" cy="548" r="1.5" fill="white"/>
+          <circle cx="1300" cy="535" r="1" fill="white"/>
+        </g>
+
+        <!-- ── WINDOW FRAME STRUCTURE ──────────────── -->
+        <!-- Floor sill base (dark steel) -->
+        <rect x="0" y="680" width="1440" height="35" fill="#1e2020"/>
+
+        <!-- Vertical main mullions (dark steel frames, 8 panels) -->
+        <!-- Panel dividers (perspective narrowing) -->
+        <rect x="0" y="195" width="22" height="520" fill="url(#panelGrad)"/>
+        <rect x="198" y="195" width="20" height="520" fill="url(#panelGrad)"/>
+        <rect x="398" y="195" width="20" height="520" fill="url(#panelGrad)"/>
+        <rect x="598" y="195" width="20" height="520" fill="url(#panelGrad)"/>
+        <rect x="798" y="195" width="20" height="520" fill="url(#panelGrad)"/>
+        <rect x="995" y="195" width="20" height="520" fill="url(#panelGrad)"/>
+        <rect x="1190" y="195" width="20" height="520" fill="url(#panelGrad)"/>
+        <rect x="1370" y="195" width="22" height="520" fill="url(#panelGrad)"/>
+        <!-- Right edge (deeper perspective) -->
+        <rect x="1392" y="195" width="48" height="520" fill="#141414"/>
+
+        <!-- Horizontal mid-rail -->
+        <rect x="0" y="420" width="1440" height="18" fill="#1e2020"/>
+        <!-- Top rail -->
+        <rect x="0" y="195" width="1440" height="18" fill="#1e2020"/>
+
+        <!-- Inner horizontal glazing bars (top half) -->
+        <rect x="0" y="308" width="1440" height="8" fill="#222" opacity=".7"/>
+        <!-- Inner horizontal glazing bars (bottom half) -->
+        <rect x="0" y="560" width="1440" height="8" fill="#222" opacity=".7"/>
+
+        <!-- Window panel glass reflections / glare -->
+        <rect x="22" y="213" width="176" height="205" fill="white" opacity=".04"/>
+        <rect x="218" y="213" width="180" height="205" fill="white" opacity=".025"/>
+        <rect x="418" y="213" width="180" height="205" fill="white" opacity=".04"/>
+        <rect x="618" y="213" width="180" height="205" fill="white" opacity=".03"/>
+        <rect x="818" y="213" width="177" height="205" fill="white" opacity=".045"/>
+        <rect x="1015" y="213" width="175" height="205" fill="white" opacity=".025"/>
+        <!-- Bottom pane reflections -->
+        <rect x="22" y="438" width="176" height="242" fill="white" opacity=".035"/>
+        <rect x="418" y="438" width="180" height="242" fill="white" opacity=".04"/>
+        <rect x="818" y="438" width="177" height="242" fill="white" opacity=".03"/>
+
+        <!-- ── INTERIOR COLUMN ─────────────────────── -->
+        <!-- Central structural column (like in photo) -->
+        <rect x="392" y="195" width="42" height="520" fill="url(#colGrad)"/>
+        <!-- Column edge highlight -->
+        <rect x="392" y="195" width="4" height="520" fill="#3a3a3a" opacity=".6"/>
+        <rect x="430" y="195" width="4" height="520" fill="#111" opacity=".8"/>
+
+        <!-- ── FLOOR ───────────────────────────────── -->
+        <!-- Base floor colour -->
+        <rect x="0" y="715" width="1440" height="185" fill="url(#floorGrad)"/>
+
+        <!-- Wood plank lines (horizontal, perspective foreshortened) -->
+        <!-- Plank separators (subtle warm gray) -->
+        <line x1="0" y1="730" x2="1440" y2="730" stroke="#9a9088" stroke-width="1.2" opacity=".5"/>
+        <line x1="0" y1="745" x2="1440" y2="745" stroke="#9a9088" stroke-width="1" opacity=".45"/>
+        <line x1="0" y1="760" x2="1440" y2="760" stroke="#9a9088" stroke-width="1.2" opacity=".5"/>
+        <line x1="0" y1="776" x2="1440" y2="776" stroke="#9a9088" stroke-width="1" opacity=".4"/>
+        <line x1="0" y1="792" x2="1440" y2="792" stroke="#9a9088" stroke-width="1.2" opacity=".45"/>
+        <line x1="0" y1="808" x2="1440" y2="808" stroke="#9a9088" stroke-width="1" opacity=".4"/>
+        <line x1="0" y1="824" x2="1440" y2="824" stroke="#9a9088" stroke-width="1.2" opacity=".4"/>
+        <line x1="0" y1="840" x2="1440" y2="840" stroke="#9a9088" stroke-width="1" opacity=".35"/>
+        <line x1="0" y1="856" x2="1440" y2="856" stroke="#9a9088" stroke-width="1.2" opacity=".35"/>
+        <line x1="0" y1="872" x2="1440" y2="872" stroke="#9a9088" stroke-width="1" opacity=".3"/>
+        <line x1="0" y1="888" x2="1440" y2="888" stroke="#9a9088" stroke-width="1" opacity=".25"/>
+
+        <!-- Plank length breaks (vertical, staggered) -->
+        <line x1="240" y1="715" x2="240" y2="760" stroke="#9a9088" stroke-width="1" opacity=".3"/>
+        <line x1="480" y1="730" x2="480" y2="776" stroke="#9a9088" stroke-width="1" opacity=".25"/>
+        <line x1="720" y1="715" x2="720" y2="760" stroke="#9a9088" stroke-width="1" opacity=".3"/>
+        <line x1="960" y1="730" x2="960" y2="776" stroke="#9a9088" stroke-width="1" opacity=".25"/>
+        <line x1="1200" y1="715" x2="1200" y2="760" stroke="#9a9088" stroke-width="1" opacity=".3"/>
+        <line x1="120" y1="760" x2="120" y2="808" stroke="#9a9088" stroke-width="1" opacity=".25"/>
+        <line x1="360" y1="776" x2="360" y2="824" stroke="#9a9088" stroke-width="1" opacity=".25"/>
+        <line x1="600" y1="760" x2="600" y2="808" stroke="#9a9088" stroke-width="1" opacity=".25"/>
+        <line x1="840" y1="776" x2="840" y2="824" stroke="#9a9088" stroke-width="1" opacity=".25"/>
+        <line x1="1080" y1="760" x2="1080" y2="808" stroke="#9a9088" stroke-width="1" opacity=".25"/>
+        <line x1="1320" y1="776" x2="1320" y2="824" stroke="#9a9088" stroke-width="1" opacity=".25"/>
+
+        <!-- Floor reflection / window light spill on floor -->
+        <rect x="22" y="715" width="176" height="185" fill="white" opacity=".06"/>
+        <rect x="418" y="715" width="180" height="185" fill="white" opacity=".055"/>
+        <rect x="818" y="715" width="177" height="185" fill="white" opacity=".06"/>
+        <rect x="1015" y="715" width="175" height="185" fill="white" opacity=".045"/>
+
+        <!-- ── OVERLAYS ─────────────────────────────── -->
+        <!-- Cinematic left-to-right dark overlay (text legibility) -->
+        <rect x="0" y="0" width="1440" height="900" fill="url(#overLay)"/>
+        <!-- Bottom vignette -->
+        <rect x="0" y="600" width="1440" height="300" fill="url(#botFade)"/>
+        <!-- Grain -->
+        <rect x="0" y="0" width="1440" height="900" fill="transparent" filter="url(#grain2)" opacity=".06"/>
+      </g>
+    </svg>
+  </div>
+</div>
+  <div class="hero-overlay"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">NSW, Australia · Dulux Accredited · Est. 20+ Years</p>
+    <h1 class="hero-h">Reflexion<span>Finish.</span></h1>
+    <p class="hero-tagline">For a <em>professional experience.</em></p>
+    <div class="hero-btns">
+      <button class="btn-p">Explore Services <svg width="14" height="14" stroke="white" fill="none" stroke-width="2.5" viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></button>
+      <button class="btn-o">Contact Us</button>
+    </div>
+    <div class="hero-trust">
+      <div class="htrust-item"><div class="htrust-dot"></div>Dulux Accredited Business</div>
+      <div class="htrust-item blue"><div class="htrust-dot"></div>Lic. No. 72169C</div>
+      <div class="htrust-item yel"><div class="htrust-dot"></div>ABN. 94 523 201 349</div>
+    </div>
+  </div>
+
+  <div class="hero-stats-bar">
+    <div class="hstat-item"><div class="hstat-n">20<sup>+</sup></div><div class="hstat-l">Years Experience</div></div>
+    <div class="hstat-item"><div class="hstat-n">4k<sup>+</sup></div><div class="hstat-l">Projects Completed</div></div>
+    <div class="hstat-item"><div class="hstat-n">98<sup>%</sup></div><div class="hstat-l">Satisfaction Rate</div></div>
+    <div class="hstat-item"><div class="hstat-n">NSW</div><div class="hstat-l">Australia Based</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div>
+        <p class="sec-tag rv">About Reflexion Finish</p>
+        <h2 class="about-h rv d1">Young &amp; Energetic Team.<br><em>Two Decades of Expertise.</em></h2>
+        <p class="about-sub rv d2">We deliver an unforgettable service, with a combination of great experience, a professional team, best materials and an exceptional eye for detail.</p>
+        <p class="about-p rv d2">We at Reflexion Finish are a <strong>young and energetic team with over 20 years of industry experience.</strong> Our goal is to preserve, beautify, and protect your home or business with quality painting products and service.</p>
+        <p class="about-p rv d3">Our team of highly skilled painters will get the job right, the first time, so you can enjoy your home or business for many years to come. A fresh coat of paint can make an amazing difference to any home or office — from one feature wall in a striking colour to a complete interior transformation.</p>
+        <p class="about-p rv d3"><strong>Reflexion Finish is a Dulux accredited business</strong>, therefore we only use quality paints for guaranteed results. Whatever your painting requirements — home, office, clubs, schools, interior, exterior — we would be more than happy to assist you.</p>
+        <div class="about-creds rv d4">
+          <span class="acred"><span class="acred-dot y"></span>Dulux Accredited</span>
+          <span class="acred"><span class="acred-dot"></span>Lic. No. 72169C</span>
+          <span class="acred"><span class="acred-dot c"></span>ABN. 94 523 201 349</span>
+          <span class="acred"><span class="acred-dot"></span>NSW Australia</span>
+        </div>
+      </div>
+      <div class="about-right rv d2">
+        <div class="about-img-main">
+          <img src="https://www.reflexionfinish.com.au/template/caffe43a/images/service-1.jpg" alt="Reflexion Finish painting service" onerror="this.style.display='none'">
+          <div class="about-img-badge">
+            <strong>20<sup style="font-size:13px">+</sup></strong>
+            <span>Years of Excellence</span>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px">
+          <div class="about-img-sec">
+            <img src="https://www.reflexionfinish.com.au/template/caffe43a/images/service-2.jpg" alt="Commercial painting" onerror="this.style.display='none'">
+            <div class="about-img-sec-label">Commercial</div>
+          </div>
+          <div class="about-img-sec">
+            <img src="https://www.reflexionfinish.com.au/template/caffe43a/images/service-3.jpg" alt="Interior finishing" onerror="this.style.display='none'">
+            <div class="about-img-sec-label">Decorative</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="products" id="products">
+  <div class="sec-inner">
+    <div class="sec-head rv">
+      <p class="sec-tag" style="color:var(--s)">What We Do</p>
+      <h2 class="sec-title">Professional Services.</h2>
+      <p class="sec-sub">From single rooms to entire commercial buildings — precision, experience, and quality materials on every job.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="pc pc-p1 rv d1">
+        <div class="pc-img">
+          <div class="pc-badge">Popular</div>
+          <svg class="pc-visual" width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"><rect x="12" y="12" width="56" height="56" rx="3"/><line x1="12" y1="30" x2="68" y2="30"/><rect x="20" y="38" width="16" height="22"/><rect x="44" y="38" width="16" height="22"/></svg>
+          <div class="pc-overlay"><div class="pc-name">Interior &amp; Exterior</div><div class="pc-cat">All Surface Types</div></div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-bens"><div class="pben">All surface types &amp; substrates</div><div class="pben">Premium Dulux-accredited paints</div><div class="pben">Flawless prep-to-finish process</div></div>
+          <span class="pc-link">Learn More <svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+        </div>
+      </div>
+      <div class="pc pc-p2 rv d2">
+        <div class="pc-img">
+          <svg class="pc-visual" width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"><path d="M10 60L20 20l20 25 20-25 10 40Z"/><line x1="20" y1="20" x2="20" y2="60"/><line x1="60" y1="20" x2="60" y2="60"/></svg>
+          <div class="pc-overlay"><div class="pc-name">Domestic, Commercial &amp; Industrial</div><div class="pc-cat">All Project Scales</div></div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-bens"><div class="pben">Homes, offices &amp; warehouses</div><div class="pben">Scalable teams for any job size</div><div class="pben">Minimal disruption guaranteed</div></div>
+          <span class="pc-link">Learn More <svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+        </div>
+      </div>
+      <div class="pc pc-p3 rv d3">
+        <div class="pc-img">
+          <div class="pc-badge">Expert</div>
+          <svg class="pc-visual" width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"><circle cx="40" cy="36" r="18"/><path d="M28 58C28 48 52 48 52 58"/><path d="M14 36h12M54 36h12M40 14v8M40 50v8"/></svg>
+          <div class="pc-overlay"><div class="pc-name">Colour Consultation</div><div class="pc-cat">Design &amp; Specification</div></div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-bens"><div class="pben">Expert colour matching &amp; schemes</div><div class="pben">Dulux colour system access</div><div class="pben">On-site &amp; virtual consultations</div></div>
+          <span class="pc-link">Learn More <svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+        </div>
+      </div>
+      <div class="pc pc-p4 rv d1">
+        <div class="pc-img">
+          <svg class="pc-visual" width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"><path d="M20 60C20 40 40 20 60 20"/><path d="M15 55C20 35 40 15 65 15"/><path d="M25 65C25 45 45 25 65 25"/><circle cx="55" cy="25" r="6"/></svg>
+          <div class="pc-overlay"><div class="pc-name">Decorative Finishes</div><div class="pc-cat">Venetian, Suede &amp; Metallic</div></div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-bens"><div class="pben">French wash, sponge &amp; rag effects</div><div class="pben">Metallic, pearl &amp; Tuscan finishes</div><div class="pben">Feature walls &amp; statement spaces</div></div>
+          <span class="pc-link">Learn More <svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+        </div>
+      </div>
+      <div class="pc pc-p5 rv d2">
+        <div class="pc-img">
+          <svg class="pc-visual" width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"><path d="M20 55L20 30Q20 20 30 20L50 20Q60 20 60 30L60 55"/><line x1="10" y1="55" x2="70" y2="55"/><line x1="35" y1="55" x2="35" y2="40"/><line x1="45" y1="55" x2="45" y2="40"/></svg>
+          <div class="pc-overlay"><div class="pc-name">General Repairs &amp; Maintenance</div><div class="pc-cat">Upkeep &amp; Restoration</div></div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-bens"><div class="pben">Crack, hole &amp; surface repairs</div><div class="pben">Scheduled maintenance programs</div><div class="pben">Touch-up &amp; full repaints</div></div>
+          <span class="pc-link">Learn More <svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+        </div>
+      </div>
+      <div class="pc pc-p6 rv d3">
+        <div class="pc-img">
+          <svg class="pc-visual" width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"><rect x="15" y="20" width="50" height="40" rx="3"/><path d="M15 35L65 35"/><circle cx="40" cy="50" r="7"/><path d="M36 50h8M40 46v8"/></svg>
+          <div class="pc-overlay"><div class="pc-name">Protective Coatings</div><div class="pc-cat">Industrial &amp; Commercial Grade</div></div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-bens"><div class="pben">Anti-corrosion barrier systems</div><div class="pben">Epoxy, polyurethane &amp; sealers</div><div class="pben">Harsh environment rated</div></div>
+          <span class="pc-link">Learn More <svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:52px" class="rv">
+      <button class="btn-p" style="font-size:13px;padding:18px 48px;background:var(--b);gap:12px">Explore All Services <svg width="14" height="14" stroke="white" fill="none" stroke-width="2.5" viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="process-bg"></div>
+  <div class="sec-inner">
+    <div class="sec-head rv">
+      <p class="sec-tag">How It Works</p>
+      <h2 class="sec-title">The Reflexion Process.</h2>
+      <p class="sec-sub">A proven four-step methodology that guarantees exceptional results on every single project.</p>
+    </div>
+    <div class="proc-steps">
+      <div class="proc-line"></div>
+      <div class="pstep rv d1"><div class="pstep-n">01</div><div class="pstep-title">Surface Assessment</div><p class="pstep-desc">Every project starts with a thorough analysis of the substrate, existing coatings, and environmental conditions.</p></div>
+      <div class="pstep rv d2"><div class="pstep-n">02</div><div class="pstep-title">Preparation &amp; Priming</div><p class="pstep-desc">Correct surface prep is everything. We clean, repair, and prime to manufacturer specification before any topcoat is applied.</p></div>
+      <div class="pstep rv d3"><div class="pstep-n">03</div><div class="pstep-title">Precision Application</div><p class="pstep-desc">Professional-grade techniques ensure even, full-coverage coats with no holidays, runs, or sags.</p></div>
+      <div class="pstep rv d4"><div class="pstep-n">04</div><div class="pstep-title">Quality Sign-Off</div><p class="pstep-desc">Final inspection across gloss level, film thickness, and adhesion. Every job signed off to our exacting standards.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="sec-inner">
+    <div class="sec-head rv">
+      <p class="sec-tag" style="color:var(--s);display:flex;align-items:center;justify-content:center;gap:8px"><span style="display:inline-block;width:8px;height:8px;background:var(--y);border-radius:2px"></span>Before &amp; After</p>
+      <h2 class="sec-title">See the Transformation.</h2>
+      <p class="sec-sub">Drag the slider to reveal the difference professional-grade coatings make to any surface.</p>
+    </div>
+    <div class="gal-grid rv">
+      <div class="ba-wrap" id="baSlider">
+        <div class="ba-before"></div>
+        <div class="ba-after" id="baAfter"><div class="ba-after-inner"></div></div>
+        <div class="ba-div" id="baDivider"></div>
+        <div class="ba-handle" id="baHandle"><svg viewBox="0 0 20 20"><path d="M6 4l-4 6 4 6M14 4l4 6-4 6"/></svg></div>
+        <span class="ba-lbl ba-lbl-b">Before</span>
+        <span class="ba-lbl ba-lbl-a" style="color:white">After</span>
+        <span class="ba-title">Commercial Exterior Repaint</span>
+      </div>
+      <div class="gal-right">
+        <div class="tc tc1 rv d1"><span class="tc-lbl">Natural Stone Sealer</span></div>
+        <div class="tc tc2 rv d2"><span class="tc-lbl">Dulux Weathershield</span></div>
+        <div class="tc tc3 rv d3"><span class="tc-lbl">Feature Wall — Coral</span></div>
+        <div class="tc tc4 rv d4"><span class="tc-lbl">Industrial Floor Coat</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="fcta" id="contact">
+  <div class="fcta-bg"></div>
+  <h2 class="fcta-h rv">Ready to Start<em>Your Project?</em></h2>
+  <p class="fcta-p rv d1">Whether you're a homeowner, tradie, or project manager — we'll help you find the right finish. Every time.</p>
+  <div class="fcta-btns rv d2">
+    <button class="btn-p" style="font-size:13px;padding:18px 44px">Get a Free Quote <svg width="14" height="14" stroke="white" fill="none" stroke-width="2.5" viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></button>
+    <button class="btn-o" style="color:#333;border-color:rgba(0,0,0,.2);font-size:13px;padding:18px 44px">Explore Services</button>
+  </div>
+  <p class="fcta-tag rv d3">NSW · Dulux Accredited · Lic. No. 72169C · Over 20 Years Experience</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-top">
+      <div>
+        <div style="margin-bottom:14px"><a class="brand-logo" href="#home"><span class="brand-name" style="font-size:18px">REFLEXION FINISH</span></a></div>
+        <p class="ft-tagline">Professional painting and decorating services delivered with precision across New South Wales, Australia.</p>
+        <div class="dulux-badge"><div class="dulux-top">Dulux<sup>®</sup></div><div class="dulux-bot">Accredited</div></div>
+        <div style="margin-top:16px;display:flex;flex-direction:column;gap:5px">
+          <span style="font-size:12px;color:rgba(255,255,255,.35);letter-spacing:.04em">Lic. No. 72169C</span>
+          <span style="font-size:12px;color:rgba(255,255,255,.35);letter-spacing:.04em">ABN. 94 523 201 349</span>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#">Domestic, Commercial &amp; Industrial</a></li>
+          <li><a href="#">Interior and Exterior</a></li>
+          <li><a href="#">Colour Consultation</a></li>
+          <li><a href="#">Decorative Finishes</a></li>
+          <li><a href="#">Wallpapering</a></li>
+          <li><a href="#">Protective Coatings</a></li>
+          <li><a href="#">Spray Painting</a></li>
+          <li><a href="#">General Repairs &amp; Maintenance</a></li>
+          <li><a href="#">Graffiti Removal &amp; Anti-Graffiti</a></li>
+          <li><a href="#">Body Corporate Painting</a></li>
+          <li><a href="#">Highrise Painting</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#products">Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="ft-col ft-contact">
+        <h5>Contact</h5>
+        <strong>Phone</strong><p>0411 353 589</p>
+        <strong>Location</strong><p>New South Wales, Australia</p>
+        <strong>Hours</strong><p>Mon–Fri 7am–5pm</p>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span class="ft-copy">© 2026 Reflexion Finish. All rights reserved.</span>
+      <div class="ft-reg">
+        <span>Lic. No. 72169C</span>
+        <span>ABN. 94 523 201 349</span>
+        <span>NSW · Australia</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// NAV scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+// Before/After slider
+const slider = document.getElementById('baSlider');
+const after  = document.getElementById('baAfter');
+const divider= document.getElementById('baDivider');
+const handle = document.getElementById('baHandle');
+let drag = false;
+function setPos(x){
+  const r = slider.getBoundingClientRect();
+  const p = Math.max(5, Math.min(95, ((x-r.left)/r.width)*100));
+  after.style.clipPath = `inset(0 ${100-p}% 0 0)`;
+  divider.style.left = handle.style.left = p+'%';
+}
+slider.addEventListener('mousedown', e=>{ drag=true; setPos(e.clientX); });
+slider.addEventListener('touchstart', e=>{ drag=true; setPos(e.touches[0].clientX); },{passive:true});
+window.addEventListener('mousemove', e=>{ if(drag) setPos(e.clientX); });
+window.addEventListener('touchmove', e=>{ if(drag) setPos(e.touches[0].clientX); },{passive:true});
+window.addEventListener('mouseup', ()=> drag=false);
+window.addEventListener('touchend', ()=> drag=false);
+</script>
+</head>
+</html>
