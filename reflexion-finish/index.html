@@ -24,7 +24,7 @@ nav.scrolled{background:rgba(255,255,255,.97);border-bottom:1px solid rgba(0,0,0
 nav.scrolled .nav-links a{color:var(--m)}
 .nav-links a:hover{color:var(--y)!important}
 .nav-actions{display:flex;align-items:center;gap:16px}
-.nav-phone{font-size:13px;font-weight:600;color:rgba(255,255,255,.45);transition:color .35s}
+.nav-phone{font-size:18px;font-weight:600;color:rgba(255,255,255,.45);transition:color .35s}
 nav.scrolled .nav-phone{color:var(--m)}
 .nav-cta{background:var(--c);color:var(--w);padding:10px 22px;border-radius:4px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s}
 .nav-cta:hover{background:#b04e4a;transform:translateY(-1px)}
@@ -223,18 +223,20 @@ footer{background:#060606;padding:72px 60px 40px;border-top:1px solid rgba(255,2
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="nav-logo">
-    <a class="brand-logo" href="#home"><span class="brand-name">REFLEXION FINISH</span></a>
+  <div style="display:flex;align-items:center">
+    <a href="#home" style="text-decoration:none;display:inline-flex;align-items:center">
+      <span style="font-size:24px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 2px;line-height:1;background:linear-gradient(to bottom,#7794BE 0%,#7794BE 35%,#C95E5A 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-family:'DM Sans',sans-serif">REFLEXION FINISH</span>
+    </a>
   </div>
-  <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About Us</a></li>
-    <li><a href="#products">Services</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#contact">Contact Us</a></li>
+  <ul style="display:flex;gap:32px;list-style:none;margin:0;padding:0;align-items:center">
+    <li style="margin:0;padding:0"><a href="#home" style="font-size:16px!important;font-family:'DM Sans',sans-serif!important;font-weight:400;letter-spacing:.04em;text-decoration:none;color:rgba(255,255,255,.78)">Home</a></li>
+    <li style="margin:0;padding:0"><a href="#about" style="font-size:16px!important;font-family:'DM Sans',sans-serif!important;font-weight:400;letter-spacing:.04em;text-decoration:none;color:rgba(255,255,255,.78)">About Us</a></li>
+    <li style="margin:0;padding:0"><a href="#products" style="font-size:16px!important;font-family:'DM Sans',sans-serif!important;font-weight:400;letter-spacing:.04em;text-decoration:none;color:rgba(255,255,255,.78)">Services</a></li>
+    <li style="margin:0;padding:0"><a href="#gallery" style="font-size:16px!important;font-family:'DM Sans',sans-serif!important;font-weight:400;letter-spacing:.04em;text-decoration:none;color:rgba(255,255,255,.78)">Gallery</a></li>
+    <li style="margin:0;padding:0"><a href="#contact" style="font-size:16px!important;font-family:'DM Sans',sans-serif!important;font-weight:400;letter-spacing:.04em;text-decoration:none;color:rgba(255,255,255,.78)">Contact Us</a></li>
   </ul>
-  <div class="nav-actions">
-    <span class="nav-phone">0411 353 589</span>
+  <div style="display:flex;align-items:center;gap:16px">
+    <span style="font-size:16px;font-family:'DM Sans',sans-serif;font-weight:500;color:rgba(255,255,255,.85)">0411 353 589</span>
     <button class="nav-cta">Get a Quote</button>
   </div>
 </nav>
@@ -623,33 +625,7 @@ footer{background:#060606;padding:72px 60px 40px;border-top:1px solid rgba(255,2
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="gallery" id="gallery">
-  <div class="sec-inner">
-    <div class="sec-head rv">
-      <p class="sec-tag" style="color:var(--s);display:flex;align-items:center;justify-content:center;gap:8px"><span style="display:inline-block;width:8px;height:8px;background:var(--y);border-radius:2px"></span>Before &amp; After</p>
-      <h2 class="sec-title">See the Transformation.</h2>
-      <p class="sec-sub">Drag the slider to reveal the difference professional-grade coatings make to any surface.</p>
-    </div>
-    <div class="gal-grid rv">
-      <div class="ba-wrap" id="baSlider">
-        <div class="ba-before"></div>
-        <div class="ba-after" id="baAfter"><div class="ba-after-inner"></div></div>
-        <div class="ba-div" id="baDivider"></div>
-        <div class="ba-handle" id="baHandle"><svg viewBox="0 0 20 20"><path d="M6 4l-4 6 4 6M14 4l4 6-4 6"/></svg></div>
-        <span class="ba-lbl ba-lbl-b">Before</span>
-        <span class="ba-lbl ba-lbl-a" style="color:white">After</span>
-        <span class="ba-title">Commercial Exterior Repaint</span>
-      </div>
-      <div class="gal-right">
-        <div class="tc tc1 rv d1"><span class="tc-lbl">Natural Stone Sealer</span></div>
-        <div class="tc tc2 rv d2"><span class="tc-lbl">Dulux Weathershield</span></div>
-        <div class="tc tc3 rv d3"><span class="tc-lbl">Feature Wall — Coral</span></div>
-        <div class="tc tc4 rv d4"><span class="tc-lbl">Industrial Floor Coat</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- FINAL CTA -->
 <section class="fcta" id="contact">
@@ -668,7 +644,7 @@ footer{background:#060606;padding:72px 60px 40px;border-top:1px solid rgba(255,2
   <div class="ft-inner">
     <div class="ft-top">
       <div>
-        <div style="margin-bottom:14px"><a class="brand-logo" href="#home"><span class="brand-name" style="font-size:18px">REFLEXION FINISH</span></a></div>
+        <div style="margin-bottom:14px">          <a class="brand-logo" href="#home"><span class="brand-name" style="font-size:18px;background:linear-gradient(to bottom,#7794BE 0%,#7794BE 35%,#C95E5A 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">REFLEXION FINISH</span></a></div>
         <p class="ft-tagline">Professional painting and decorating services delivered with precision across New South Wales, Australia.</p>
         <div class="dulux-badge"><div class="dulux-top">Dulux<sup>®</sup></div><div class="dulux-bot">Accredited</div></div>
         <div style="margin-top:16px;display:flex;flex-direction:column;gap:5px">
@@ -721,7 +697,29 @@ footer{background:#060606;padding:72px 60px 40px;border-top:1px solid rgba(255,2
 </footer>
 
 <script>
-// NAV scroll
+// Nav hover effects
+document.querySelectorAll('#nav ul a[href^="#"]').forEach(link => {
+  link.style.transition = 'color .25s, border-bottom-color .25s';
+  link.style.borderBottom = '1px solid transparent';
+  link.style.paddingBottom = '3px';
+  link.addEventListener('mouseenter', () => {
+    link.style.color = '#FEE300';
+    link.style.borderBottomColor = '#FEE300';
+  });
+  link.addEventListener('mouseleave', () => {
+    const scrolled = document.getElementById('nav').classList.contains('scrolled');
+    link.style.color = scrolled ? '#717170' : 'rgba(255,255,255,.78)';
+    link.style.borderBottomColor = 'transparent';
+  });
+});
+
+// Keep hover colours correct after scroll state changes
+document.getElementById('nav').addEventListener('transitionend', () => {
+  const scrolled = document.getElementById('nav').classList.contains('scrolled');
+  document.querySelectorAll('#nav a[href^="#"]').forEach(link => {
+    link.style.color = scrolled ? '#717170' : 'rgba(255,255,255,.78)';
+  });
+});
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
 
@@ -731,24 +729,7 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 
-// Before/After slider
-const slider = document.getElementById('baSlider');
-const after  = document.getElementById('baAfter');
-const divider= document.getElementById('baDivider');
-const handle = document.getElementById('baHandle');
-let drag = false;
-function setPos(x){
-  const r = slider.getBoundingClientRect();
-  const p = Math.max(5, Math.min(95, ((x-r.left)/r.width)*100));
-  after.style.clipPath = `inset(0 ${100-p}% 0 0)`;
-  divider.style.left = handle.style.left = p+'%';
-}
-slider.addEventListener('mousedown', e=>{ drag=true; setPos(e.clientX); });
-slider.addEventListener('touchstart', e=>{ drag=true; setPos(e.touches[0].clientX); },{passive:true});
-window.addEventListener('mousemove', e=>{ if(drag) setPos(e.clientX); });
-window.addEventListener('touchmove', e=>{ if(drag) setPos(e.touches[0].clientX); },{passive:true});
-window.addEventListener('mouseup', ()=> drag=false);
-window.addEventListener('touchend', ()=> drag=false);
+
 </script>
 </head>
 </html>
