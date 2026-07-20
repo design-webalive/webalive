@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jordan Ellis, Seller — Instruments Exchange</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  /* ===================================================================
+     Instruments Exchange — Public Vendor Profile (concept, static HTML/CSS)
+     Pure HTML + CSS, no JavaScript — ready for WordPress/HivePress handoff.
+     Tokens inlined so this file opens self-contained anywhere.
+     =================================================================== */
+
+  :root {
+    --gold-200:#e6c87c; --gold-300:#d9b257; --gold-400:#cda648;
+    --gold-500:#c2953c; --gold-600:#aa8030; --gold-50:#f9f0da;
+    --black:#0c0c0e; --char-900:#121214; --char-800:#1a1a1d; --char-700:#222226; --char-600:#313137;
+    --ink-900:#1c1813; --ink-700:#3d362d; --ink-500:#6f6655; --ink-400:#9c9281; --ink-300:#c9bda6;
+    --paper-0:#ffffff; --paper-50:#faf8f3; --paper-100:#f3efe6; --paper-200:#e9e3d7; --paper-300:#d8d0c1;
+    --text-strong:var(--ink-900); --text-body:var(--ink-700); --text-secondary:var(--ink-500); --text-muted:var(--ink-400);
+    --text-accent:var(--gold-600); --text-inverse:var(--paper-50); --text-inverse-muted:#b7b2ab;
+    --border-subtle:#ece7dd; --border-default:#e0d9cc; --border-strong:#cfc6b6; --border-gold:rgba(190,142,60,0.55);
+    --border-focus:var(--gold-400); --border-inverse:rgba(255,255,255,0.12);
+    --brand:var(--gold-500); --brand-hover:var(--gold-400); --brand-pressed:var(--gold-600);
+    --info-bg:var(--paper-100);
+    --font-display:"Cormorant Garamond",Georgia,serif;
+    --font-sans:"Hanken Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+    --radius-sm:6px; --radius-md:10px; --radius-lg:16px; --radius-xl:24px; --radius-pill:999px;
+    --shadow-card:0 1px 2px rgba(18,16,20,0.05), 0 10px 24px rgba(18,16,20,0.07);
+    --shadow-lg:0 16px 36px rgba(18,16,20,0.14), 0 6px 12px rgba(18,16,20,0.07);
+    --ring-focus:0 0 0 3px rgba(190,142,60,0.40);
+    --ease-out:cubic-bezier(0.22,0.61,0.36,1); --dur-fast:120ms; --dur-base:200ms;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper-50); color: var(--text-body); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; }
+  a { color: var(--gold-600); text-decoration: none; }
+  a:hover { color: var(--gold-500); }
+
+  .ix-container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px,5vw,48px); }
+
+  /* ---------- Header ---------- */
+  .ix-header { position: sticky; top: 0; z-index: 100; background: rgba(15,15,17,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--char-600); }
+  .ix-header__inner { max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px,5vw,40px); height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .ix-header__logo img { height: 54px; width: auto; }
+  .ix-header__nav { display: flex; align-items: center; gap: clamp(18px,2.2vw,32px); }
+  .ix-navlink { font-size: 14.5px; font-weight: 500; color: rgba(250,248,243,0.82); white-space: nowrap; transition: color var(--dur-fast) var(--ease-out); }
+  .ix-navlink:hover { color: var(--gold-300); }
+  .ix-header__actions { display: flex; align-items: center; gap: clamp(12px,1.6vw,20px); }
+  .ix-navlink--signin { font-weight: 600; }
+  .ix-menutoggle { position: absolute; opacity: 0; width: 0; height: 0; }
+  .ix-burger { display: none; align-items: center; justify-content: center; background: none; border: none; color: var(--paper-50); cursor: pointer; padding: 6px; }
+  .ix-burger svg { width: 26px; height: 26px; display: block; }
+  .ix-mobilemenu { display: none; }
+
+  /* ---------- Buttons ---------- */
+  .ix-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5em; font-family: var(--font-sans); font-weight: 600; line-height: 1; white-space: nowrap; cursor: pointer; border: 1px solid transparent; border-radius: var(--radius-md); transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out); text-decoration: none; }
+  .ix-btn--sm { font-size: 14px; padding: 0.5rem 0.85rem; }
+  .ix-btn--md { font-size: 16px; padding: 0.7rem 1.15rem; }
+  .ix-btn--full { width: 100%; }
+  .ix-btn--primary { background: var(--brand); color: var(--char-900); border-color: var(--brand); }
+  .ix-btn--primary:hover { background: var(--brand-hover); border-color: var(--brand-hover); color: var(--char-900); }
+  .ix-btn--primary:active { transform: translateY(1px); }
+  .ix-btn--ghost { background: transparent; color: var(--text-inverse); border-color: var(--border-inverse); }
+  .ix-btn--ghost:hover { border-color: rgba(255,255,255,0.32); color: var(--paper-50); }
+
+  /* ---------- Breadcrumb ---------- */
+  .vp-crumb { padding: 20px 0 0; }
+  .vp-crumb__inner { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-inverse-muted); }
+  .vp-crumb__inner a { color: var(--text-inverse-muted); }
+  .vp-crumb__inner a:hover { color: var(--gold-300); }
+  .vp-crumb__inner span[aria-hidden] { color: rgba(255,255,255,0.3); }
+  .vp-crumb__inner b { color: var(--paper-50); font-weight: 500; }
+
+  /* ---------- Profile summary band ---------- */
+  .vp-summary { background: radial-gradient(ellipse 900px 500px at 15% -10%, rgba(190,142,60,0.16), transparent 60%), linear-gradient(180deg, var(--char-900), var(--char-800)); color: var(--text-inverse); padding: clamp(28px,4vw,40px) 0 clamp(72px,9vw,96px); }
+  .vp-summary__row { display: flex; align-items: flex-end; gap: clamp(20px,3vw,30px); flex-wrap: wrap; margin-top: clamp(18px,3vw,26px); }
+  .vp-avatar { width: 108px; height: 108px; border-radius: 50%; background: linear-gradient(150deg, var(--char-700), var(--char-800)); border: 3px solid var(--gold-400); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 8px 20px rgba(0,0,0,0.35); }
+  .vp-avatar svg { width: 46px; height: 46px; stroke: var(--ink-400); }
+  .vp-id { flex: 1 1 320px; min-width: 0; }
+  .vp-id__toprow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .vp-id__name { font-family: var(--font-display); font-weight: 500; font-size: clamp(30px,4vw,44px); line-height: 1.05; letter-spacing: -0.01em; color: var(--paper-50); margin: 0; }
+  .vp-verified { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 600; color: var(--gold-300); background: rgba(190,142,60,0.14); border: 1px solid var(--border-gold); border-radius: var(--radius-pill); padding: 4px 11px 4px 8px; white-space: nowrap; }
+  .vp-verified svg { width: 14px; height: 14px; }
+  .vp-typepill { font-size: 12.5px; font-weight: 600; color: rgba(250,248,243,0.85); background: rgba(255,255,255,0.08); border: 1px solid var(--border-inverse); border-radius: var(--radius-pill); padding: 4px 11px; white-space: nowrap; }
+  .vp-id__meta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 10px 0 0; font-size: 14px; color: var(--text-inverse-muted); }
+  .vp-stars { display: inline-flex; align-items: center; gap: 3px; }
+  .vp-stars svg { width: 15px; height: 15px; }
+  .vp-stars svg.is-filled { fill: var(--gold-300); stroke: var(--gold-300); }
+  .vp-stars svg.is-empty { fill: none; stroke: rgba(255,255,255,0.28); }
+  .vp-id__meta .vp-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.28); }
+  
+
+  /* ---------- Content layout ---------- */
+  .vp-section { padding: clamp(36px,5vw,52px) 0 clamp(64px,9vw,104px); }
+  .vp-layout { display: grid; grid-template-columns: 300px 1fr; gap: clamp(24px,4vw,40px); align-items: start; }
+  .vp-col-left { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 20px; }
+  .vp-col-right { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+
+  .vp-card { background: var(--paper-0); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); padding: clamp(22px,2.6vw,28px); }
+  .vp-card--accent { border-top: 3px solid var(--gold-400); }
+  .vp-card h2 { font-family: var(--font-display); font-weight: 500; font-size: 22px; letter-spacing: -0.01em; color: var(--text-strong); margin: 0 0 14px; }
+
+  /* Contact card (left, sits above the fold since summary overlaps) */
+  .vp-contact__msgbtn { margin-top: 16px; padding: 1rem 1.25rem; font-size: 17px; border-radius: var(--radius-md); box-shadow: 0 6px 16px rgba(190,142,60,0.28); }
+  .vp-contact__since { font-size: 13px; color: var(--text-muted); text-align: center; margin: 12px 0 0; }
+
+  .vp-details { display: flex; flex-direction: column; gap: 14px; }
+  .vp-detail { display: flex; align-items: flex-start; gap: 11px; font-size: 14.5px; color: var(--text-body); }
+  .vp-detail svg { width: 18px; height: 18px; stroke: var(--gold-600); flex-shrink: 0; margin-top: 1px; }
+  .vp-detail a { color: var(--text-body); }
+  .vp-detail a:hover { color: var(--gold-600); }
+
+  /* About card */
+  .vp-about p { font-size: 15px; line-height: 1.7; color: var(--text-body); margin: 0; }
+
+  /* Listings card */
+  .vp-listings__head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+  .vp-listings__head h2 { margin: 0; }
+  .vp-listings__count { font-size: 13.5px; color: var(--text-muted); }
+  .vp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .vp-listing { border: 1px solid var(--border-subtle); border-radius: var(--radius-md); overflow: hidden; background: var(--paper-50); transition: box-shadow var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
+  .vp-listing:hover { box-shadow: var(--shadow-card); transform: translateY(-2px); }
+  .vp-listing__img { aspect-ratio: 1/0.82; background: var(--paper-200); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+  .vp-listing__img svg { width: 30px; height: 30px; stroke: var(--ink-400); }
+  .vp-listing__img span { font-size: 11px; letter-spacing: 0.03em; color: var(--ink-400); }
+  .vp-listing__body { padding: 12px 14px 15px; }
+  .vp-listing__title { font-size: 14.5px; font-weight: 600; color: var(--text-strong); margin: 0 0 4px; }
+  .vp-listing__price { font-family: var(--font-mono); font-size: 13px; color: var(--gold-600); margin: 0; }
+  .vp-pagination { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 22px; }
+  .vp-pagination a, .vp-pagination span { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: var(--radius-sm); font-size: 13.5px; font-weight: 600; color: var(--text-secondary); }
+  .vp-pagination a:hover { background: var(--paper-100); color: var(--text-strong); }
+  .vp-pagination .is-current { background: var(--brand); color: var(--char-900); }
+  .vp-pagination .vp-page-arrow svg { width: 15px; height: 15px; stroke: currentColor; }
+
+  /* Reviews card */
+  .vp-reviews__head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+  .vp-reviews__head h2 { margin: 0; }
+  .vp-reviews__avg { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-secondary); }
+  .vp-review-list { display: flex; flex-direction: column; }
+  .vp-review { display: flex; gap: 14px; padding: 18px 0; border-top: 1px solid var(--border-subtle); }
+  .vp-review:first-child { border-top: none; padding-top: 0; }
+  .vp-review__avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--paper-200); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .vp-review__avatar svg { width: 19px; height: 19px; stroke: var(--ink-400); }
+  .vp-review__top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
+  .vp-review__name { font-size: 14.5px; font-weight: 600; color: var(--text-strong); }
+  .vp-review__date { font-size: 12.5px; color: var(--text-muted); }
+  .vp-review__text { font-size: 14.5px; line-height: 1.6; color: var(--text-body); margin: 4px 0 0; }
+  .vp-review .vp-stars svg.is-filled { fill: var(--gold-500); stroke: var(--gold-500); }
+  .vp-review .vp-stars svg.is-empty { fill: none; stroke: var(--border-strong); }
+
+  .vp-devnote { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--text-muted); text-align: center; margin: 22px 0 0; }
+
+  /* ---------- Footer (unchanged) ---------- */
+  .ix-footer { background: var(--char-900); color: rgba(250,248,243,0.7); padding-top: clamp(56px,7vw,84px); padding-bottom: 30px; }
+  .ix-footer__top { display: grid; grid-template-columns: 1.5fr 2fr 1.5fr; gap: clamp(36px,5vw,72px); }
+  .ix-footer__brand img { height: 58px; width: auto; }
+  .ix-footer__tag { font-size: 14px; line-height: 1.6; max-width: 280px; margin: 18px 0 20px; color: rgba(250,248,243,0.6); }
+  .ix-footer__social { display: flex; gap: 14px; }
+  .ix-footer__social a { color: rgba(250,248,243,0.6); transition: color var(--dur-fast); }
+  .ix-footer__social a:hover { color: var(--gold-300); }
+  .ix-footer__social svg { width: 20px; height: 20px; display: block; }
+  .ix-footer__cols { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+  .ix-footer__col h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--paper-50); margin: 0 0 14px; }
+  .ix-footer__col a { display: block; font-size: 14px; color: rgba(250,248,243,0.62); line-height: 1.45; margin-bottom: 9px; }
+  .ix-footer__col a:hover { color: var(--gold-300); }
+  .ix-footer__news h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--paper-50); margin: 0 0 10px; }
+  .ix-footer__news p { font-size: 14px; line-height: 1.6; color: rgba(250,248,243,0.6); margin: 0 0 14px; }
+  .ix-footer__newsform { display: flex; gap: 8px; }
+  .ix-footer__newsform input { flex: 1; min-width: 0; font-family: var(--font-sans); font-size: 15px; color: var(--text-strong); background: var(--paper-0); border: 1px solid var(--border-strong); border-radius: var(--radius-md); padding: 0.65rem 0.85rem; }
+  .ix-footer__newsform input::placeholder { color: var(--text-muted); }
+  .ix-footer__newsform input:focus { outline: none; border-color: var(--border-focus); box-shadow: var(--ring-focus); }
+  .ix-footer__partners { display: flex; align-items: center; gap: clamp(20px,3vw,44px); flex-wrap: wrap; margin-top: clamp(44px,5vw,64px); padding-top: 28px; border-top: 1px solid var(--char-600); }
+  .ix-footer__partnerlabel { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(250,248,243,0.6); white-space: nowrap; }
+  .ix-footer__partnerrow { display: flex; align-items: center; gap: clamp(22px,3.5vw,50px); flex-wrap: wrap; }
+  .ix-footer__partnermark { font-size: clamp(15px,1.5vw,18px); color: rgba(250,248,243,0.55); text-decoration: none; white-space: nowrap; transition: color var(--dur-fast); }
+  .ix-footer__partnermark:hover { color: var(--gold-300); }
+  .ix-footer__legal { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid var(--char-600); margin-top: clamp(40px,5vw,60px); padding-top: 22px; font-size: 13px; color: rgba(250,248,243,0.5); flex-wrap: wrap; }
+  .ix-footer__legallinks { display: flex; gap: 18px; }
+  .ix-footer__legallinks a { color: rgba(250,248,243,0.5); }
+  .ix-footer__legallinks a:hover { color: var(--gold-300); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .ix-header__nav { display: none; }
+    .ix-navlink--signin { display: none; }
+    .ix-burger { display: inline-flex; }
+    .ix-menutoggle:checked ~ .ix-mobilemenu { display: flex; }
+    .ix-mobilemenu { flex-direction: column; gap: 4px; background: rgba(15,15,17,0.97); backdrop-filter: blur(12px); padding: 12px clamp(20px,5vw,40px) 20px; border-bottom: 1px solid var(--char-600); }
+    .ix-mobilemenu a.ix-navlink { color: var(--paper-50); font-size: 17px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .vp-layout { grid-template-columns: 1fr; }
+    .vp-col-left { position: static; }
+    .ix-footer__top { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .vp-grid { grid-template-columns: 1fr 1fr; }
+    .vp-summary__row { align-items: flex-start; }
+    .ix-footer__cols { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 460px) {
+    .vp-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===================== Header ===================== -->
+  <header class="ix-header">
+    <input type="checkbox" id="ix-menutoggle" class="ix-menutoggle" aria-hidden="true" />
+    <div class="ix-header__inner">
+      <a class="ix-header__logo" href="#" aria-label="Instruments Exchange home">
+        <img src="assets/logo-reversed.png" alt="Instruments Exchange" />
+      </a>
+      <nav class="ix-header__nav" aria-label="Primary">
+        <a class="ix-navlink" href="#">Browse</a>
+        <a class="ix-navlink" href="#">List</a>
+        <a class="ix-navlink" href="#">Ex-Demo</a>
+        <a class="ix-navlink" href="#">For Stores</a>
+        <a class="ix-navlink" href="#">How It Works</a>
+      </nav>
+      <div class="ix-header__actions">
+        <a class="ix-navlink ix-navlink--signin" href="#">Sign in</a>
+        <a class="ix-btn ix-btn--primary ix-btn--sm" href="#">Post a listing</a>
+        <label class="ix-burger" for="ix-menutoggle" aria-label="Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </label>
+      </div>
+    </div>
+    <nav class="ix-mobilemenu" aria-label="Mobile">
+      <a class="ix-navlink" href="#">Browse</a>
+      <a class="ix-navlink" href="#">List</a>
+      <a class="ix-navlink" href="#">Ex-Demo</a>
+      <a class="ix-navlink" href="#">For Stores</a>
+      <a class="ix-navlink" href="#">How It Works</a>
+      <a class="ix-navlink" href="#">Sign in</a>
+    </nav>
+  </header>
+
+  <!-- ===================== Profile summary ===================== -->
+  <section class="vp-summary">
+    <div class="ix-container vp-crumb">
+      <div class="vp-crumb__inner">
+        <a href="#">Home</a><span aria-hidden="true">/</span>
+        <a href="#">Sellers</a><span aria-hidden="true">/</span>
+        <b>Jordan Ellis</b>
+      </div>
+    </div>
+    <div class="ix-container vp-summary__row">
+      <div class="vp-avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+      </div>
+      <div class="vp-id">
+        <div class="vp-id__toprow">
+          <h1 class="vp-id__name">Jordan Ellis</h1>
+          <span class="vp-verified"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Verified seller</span>
+          <span class="vp-typepill">Private seller</span>
+        </div>
+        <div class="vp-id__meta">
+          <span class="vp-stars" aria-label="4.8 out of 5 stars">
+            <svg class="is-filled" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg class="is-filled" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg class="is-filled" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg class="is-filled" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg class="is-empty" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+          </span>
+          <span>4.8 (32 reviews)</span>
+          <span class="vp-dot" aria-hidden="true"></span>
+          <span>Member since March 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Profile content ===================== -->
+  <section class="vp-section">
+    <div class="ix-container vp-layout">
+
+      <!-- Left column -->
+      <div class="vp-col-left">
+        <div class="vp-card vp-contact vp-card--accent">
+          <a class="ix-btn ix-btn--primary ix-btn--full vp-contact__msgbtn" href="#">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-1.1 4.2L21 20l-4.3-1.1a8.5 8.5 0 1 1 4.3-7.4Z"/></svg>
+            Send message
+          </a>
+          <p class="vp-contact__since">Usually responds within a day</p>
+        </div>
+        <div class="vp-card">
+          <h2>Details</h2>
+          <div class="vp-details">
+            <div class="vp-detail">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.8 2Z"/></svg>
+              <span>0412 345 678</span>
+            </div>
+            <div class="vp-detail">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 0 1 0 18 13 13 0 0 1 0-18Z"/></svg>
+              <a href="#">instagram.com/jordanellisguitars</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column -->
+      <div class="vp-col-right">
+
+        <div class="vp-card vp-about">
+          <h2>About</h2>
+          <p>Been playing and collecting for 15 years — mostly electric guitars and vintage amps. I look after my gear properly, so what you see is what you get: honest condition notes, real photos, fair prices. Based in Sydney, happy to meet up for a play-test before you buy.</p>
+        </div>
+
+        <div class="vp-card">
+          <div class="vp-listings__head">
+            <h2>Listings by this vendor</h2>
+            <span class="vp-listings__count">14 active listings</span>
+          </div>
+          <div class="vp-grid">
+            <div class="vp-listing">
+              <div class="vp-listing__img"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.8"/><path d="m21 15-5-5-9 9"/></svg><span>Product photo</span></div>
+              <div class="vp-listing__body">
+                <p class="vp-listing__title">Fender Telecaster ’72 Reissue</p>
+                <p class="vp-listing__price">$1,450</p>
+              </div>
+            </div>
+            <div class="vp-listing">
+              <div class="vp-listing__img"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.8"/><path d="m21 15-5-5-9 9"/></svg><span>Product photo</span></div>
+              <div class="vp-listing__body">
+                <p class="vp-listing__title">Fender Twin Reverb Amp</p>
+                <p class="vp-listing__price">$980</p>
+              </div>
+            </div>
+            <div class="vp-listing">
+              <div class="vp-listing__img"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.8"/><path d="m21 15-5-5-9 9"/></svg><span>Product photo</span></div>
+              <div class="vp-listing__body">
+                <p class="vp-listing__title">Boss Katana Pedalboard Set</p>
+                <p class="vp-listing__price">$310</p>
+              </div>
+            </div>
+          </div>
+          <nav class="vp-pagination" aria-label="Listings pagination">
+            <a class="vp-page-arrow" href="#" aria-label="Previous page"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <span class="is-current">1</span>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a class="vp-page-arrow" href="#" aria-label="Next page"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+          </nav>
+        </div>
+
+        <div class="vp-card">
+          <div class="vp-reviews__head">
+            <h2>Reviews</h2>
+            <span class="vp-reviews__avg">
+              <span class="vp-stars" aria-hidden="true">
+                <svg class="is-filled" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                <svg class="is-filled" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                <svg class="is-filled" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                <svg class="is-filled" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                <svg class="is-empty" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+              </span>
+              4.8 average
+            </span>
+          </div>
+          <div class="vp-review-list">
+            <div class="vp-review">
+              <div class="vp-review__avatar"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+              <div>
+                <div class="vp-review__top">
+                  <span class="vp-review__name">Marcus T.</span>
+                  <span class="vp-stars" aria-hidden="true">
+                    <svg class="is-filled" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                    <svg class="is-filled" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                    <svg class="is-filled" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                    <svg class="is-filled" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                    <svg class="is-filled" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                  </span>
+                  <span class="vp-review__date">2 weeks ago</span>
+                </div>
+                <p class="vp-review__text">Exactly as described, great communication and a smooth pickup. Would buy from Jordan again.</p>
+              </div>
+            </div>
+            <div class="vp-review">
+              <div class="vp-review__avatar"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+              <div>
+                <div class="vp-review__top">
+                  <span class="vp-review__name">Aisha K.</span>
+                  <span class="vp-stars" aria-hidden="true">
+                    <svg class="is-filled" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                    <svg class="is-filled" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                    <svg class="is-filled" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                    <svg class="is-filled" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                    <svg class="is-empty" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                  </span>
+                  <span class="vp-review__date">1 month ago</span>
+                </div>
+                <p class="vp-review__text">Amp was well looked after and sounded fantastic. Minor scuff not mentioned in the listing, but otherwise a great buy.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="vp-devnote">Dev to implement: vendor data, listings loop &amp; reviews via HivePress (Reviews add-on)</p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== Footer ===================== -->
+  <footer class="ix-footer">
+    <div class="ix-container ix-footer__top">
+      <div class="ix-footer__brand">
+        <img src="assets/logo-reversed.png" alt="Instruments Exchange" />
+        <p class="ix-footer__tag">Australia’s marketplace for quality used &amp; ex-demo musical instruments &amp; amps.</p>
+        <div class="ix-footer__social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5h2.5V5.2C16 5.07 14.9 5 13.9 5 11.6 5 10 6.4 10 9v2H7v3.3h3V22h3.3v-7.7H16l.5-3.3h-2.8V9.3c0-.5.4-.8 1.3-.8Z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2.5" y="6" width="19" height="12" rx="3.5"/><path d="M10.5 9.5 15 12l-4.5 2.5Z" fill="currentColor" stroke="none"/></svg></a>
+        </div>
+      </div>
+      <div class="ix-footer__cols">
+        <div class="ix-footer__col">
+          <h4>Marketplace</h4>
+          <a href="#">Browse listings</a>
+          <a href="#">List your gear</a>
+          <a href="#">Ex-Demo</a>
+          <a href="#">Categories</a>
+        </div>
+        <div class="ix-footer__col">
+          <h4>About</h4>
+          <a href="#">How it works</a>
+          <a href="#">Our story</a>
+          <a href="#">For stores</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="ix-footer__col">
+          <h4>Resources</h4>
+          <a href="#">Buying guide</a>
+          <a href="#">Listing guide</a>
+          <a href="#">FAQ</a>
+          <a href="#">Community guidelines</a>
+        </div>
+      </div>
+      <div class="ix-footer__news">
+        <h4>Stay in tune</h4>
+        <p>The latest listings and gear news, now and then — never spam.</p>
+        <form class="ix-footer__newsform" action="#" method="post">
+          <input type="email" aria-label="Email address" placeholder="you@email.com" />
+          <button class="ix-btn ix-btn--primary ix-btn--md" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="ix-container ix-footer__partners">
+      <span class="ix-footer__partnerlabel">Our partners</span>
+      <div class="ix-footer__partnerrow">
+        <a class="ix-footer__partnermark" href="#" style="font-weight:700;letter-spacing:0.18em;">SONY</a>
+        <a class="ix-footer__partnermark" href="#" style="font-weight:700;font-style:italic;">Roland</a>
+        <a class="ix-footer__partnermark" href="#" style="font-weight:700;letter-spacing:0.16em;">YAMAHA</a>
+        <a class="ix-footer__partnermark" href="#" style="font-weight:700;font-style:italic;">Fender</a>
+        <a class="ix-footer__partnermark" href="#" style="font-family:var(--font-display);font-weight:600;">Sydney Conservatorium</a>
+      </div>
+    </div>
+    <div class="ix-container ix-footer__legal">
+      <span>© 2026 Instruments Exchange. All rights reserved.</span>
+      <span class="ix-footer__legallinks">
+        <a href="#">Terms</a><a href="#">Privacy</a><a href="#">Community guidelines</a>
+      </span>
+    </div>
+  </footer>
+
+</body>
+</html>
