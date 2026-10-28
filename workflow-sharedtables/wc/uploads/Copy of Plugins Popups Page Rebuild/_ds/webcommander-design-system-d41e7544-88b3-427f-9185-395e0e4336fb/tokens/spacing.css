@@ -1,0 +1,27 @@
+:root{
+  --wc-space-1:2px;
+  --wc-space-2:4px;
+  --wc-space-3:6px;
+  --wc-space-4:8px;
+  --wc-space-5:12px;
+  --wc-space-6:16px;
+  --wc-space-7:20px;
+  --wc-space-8:24px;
+  --wc-space-9:32px;
+  --wc-space-10:40px;
+
+  /* structural sizes measured from the product */
+  --wc-topbar-h:50px;
+  --wc-sidebar-w:80px;
+  --wc-sidebar-item-h:66px;
+  --wc-inspector-w:310px;
+  --wc-control-h:36px;      /* inputs, selects */
+  --wc-control-h-sm:28px;
+  --wc-button-h:36px;
+  --wc-button-h-sm:30px;
+  --wc-row-h:44px;          /* settings toggle rows */
+  --wc-table-row-h:60px;
+  --wc-card-pad:16px;
+  --wc-page-pad:24px;
+  --wc-content-max:1720px;
+}

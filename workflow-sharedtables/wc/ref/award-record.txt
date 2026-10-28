@@ -1,0 +1,223 @@
+-if>
+
+          <sc-if value="{{ isRecord }}">
+            <div>
+              <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#fff;border-bottom:1px solid var(--wc-border);padding:12px 24px">
+                <button type="button" sc-camel-on-click="{{ goQueue }}" style="display:inline-flex;align-items:center;gap:7px;background:transparent;border:0;padding:0;cursor:pointer;font:400 13px/1 var(--wc-font-sans);color:var(--wc-blue-500)" style-hover="color:#0077cf">← All submissions</button>
+                <span style="width:1px;height:20px;background:var(--wc-border)"></span>
+                <h1 style="margin:0;font:var(--wc-weight-bold) 17px/1.2 var(--wc-font-sans);color:var(--wc-text)">STT-2026-0039 &nbsp;·&nbsp; Priya Raghunathan</h1>
+                <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.StatusPill" variant="filled" tone="{{ recTone }}" hint-size="110px,22px">{{ recStatus }}</x-import>
+                <div style="flex:1"></div>
+                <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Button" size="sm" variant="secondary" icon="file-text" on-click="{{ dlWord }}" hint-size="150px,30px">Download Word</x-import>
+                <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Button" size="sm" icon="download" on-click="{{ dlPdf }}" hint-size="140px,30px">Download PDF</x-import>
+                <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.IconButton" icon="printer" label="Print" on-click="{{ dlPdf }}" hint-size="32px,32px"></x-import>
+                <button type="button" sc-camel-on-click="{{ openRecordMenu }}" aria-label="More" style="width:32px;height:32px;border:0;border-radius:50%;background:transparent;cursor:pointer;color:var(--wc-text-muted);font-size:16px;line-height:1" style-hover="background:#f4f6f7">⋮</button>
+              </div>
+              <div style="padding:24px;display:grid;gap:16px;grid-template-columns:minmax(0,1fr) 340px;align-items:start">
+                <div style="background:#fff;border:1px solid var(--wc-border);border-radius:8px;box-shadow:0 1px 2px rgba(16,24,40,.04);overflow:hidden">
+                  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid #e9edf0;padding:12px 18px">
+                    <span style="font:var(--wc-weight-semibold) 13px/1 var(--wc-font-sans);color:var(--wc-text)">Submitted application</span>
+                    <span style="font:400 12px/1 var(--wc-font-sans);color:var(--wc-text-micro)">4 pages · rendered at submission · this is the document the employer receives</span>
+                  </div>
+                  <dc-import name="ApplicationDocument" hint-size="100%,1400px"></dc-import>
+                </div>
+                <div style="display:grid;gap:16px">
+                  <div style="background:#fff;border:1px solid var(--wc-border);border-radius:8px;box-shadow:0 1px 2px rgba(16,24,40,.04);padding:18px">
+                    <div style="font:var(--wc-weight-semibold) 10px/1 var(--wc-font-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--wc-text-micro);margin-bottom:12px">Sign-off status</div>
+                    <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.StatusPill" variant="filled" tone="{{ recTone }}" hint-size="110px,22px">{{ recStatus }}</x-import>
+                    <div style="margin-top:14px;display:grid;gap:12px">
+                      <sc-for list="{{ timeline }}" as="ev" hint-placeholder-count="4">
+                        <div style="display:flex;gap:11px;align-items:flex-start">
+                          <span style="flex:0 0 auto;width:7px;height:7px;border-radius:50%;background:var(--wc-gray-300);margin-top:6px"></span>
+                          <div>
+                            <div style="font:400 13px/1.45 var(--wc-font-sans);color:var(--wc-text-secondary)">{{ ev.label }}</div>
+                            <div style="font:400 12px/1.4 var(--wc-font-sans);color:var(--wc-text-micro)">{{ ev.when }}</div>
+                          </div>
+                        </div>
+                      </sc-for>
+                    </div>
+                    <div style="margin-top:16px;padding-top:14px;border-top:1px solid #e9edf0;display:grid;gap:10px">
+                      <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Button" size="sm" variant="neutral" icon="send" on-click="{{ resend }}" hint-size="100%,30px">Resend to employer</x-import>
+                      <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Button" size="sm" variant="link" on-click="{{ goEmail }}" hint-size="100%,20px">View the email sent</x-import>
+                    </div>
+                  </div>
+                  <div style="background:#fff;border:1px solid var(--wc-border);border-radius:8px;box-shadow:0 1px 2px rgba(16,24,40,.04);padding:18px">
+                    <div style="font:var(--wc-weight-semibold) 10px/1 var(--wc-font-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--wc-text-micro);margin-bottom:12px">Endorser</div>
+                    <div style="font:var(--wc-weight-semibold) 14px/1.3 var(--wc-font-sans);color:var(--wc-text)">Chef Daniel Orsini</div>
+                    <div style="font:400 13px/1.6 var(--wc-font-sans);color:var(--wc-text-muted)">Head Teacher, Patisserie<br>Holmesglen Institute (RTO)</div>
+                    <div style="margin-top:10px;font:400 13px/1.7 var(--wc-font-sans);color:var(--wc-text-muted)">d.orsini@holmesglen.edu.au<br>03 9209 5842</div>
+                  </div>
+                  <div style="background:#fff;border:1px solid var(--wc-border);border-radius:8px;box-shadow:0 1px 2px rgba(16,24,40,.04);padding:18px">
+                    <div style="font:var(--wc-weight-semibold) 10px/1 var(--wc-font-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--wc-text-micro);margin-bottom:12px">Attachments</div>
+                    <div style="display:grid;gap:10px">
+                      <sc-for list="{{ files }}" as="f" hint-placeholder-count="3">
+                        <div style="display:flex;align-items:center;gap:10px">
+                          <span style="flex:0 0 auto;width:34px;height:34px;border-radius:6px;background:var(--wc-gray-100);border:1px solid var(--wc-border);display:grid;place-items:center;font:var(--wc-weight-semibold) 9px/1 var(--wc-font-sans);color:var(--wc-text-micro)">{{ f.kind }}</span>
+                          <div style="min-width:0;flex:1">
+                            <div style="font:400 13px/1.3 var(--wc-font-sans);color:var(--wc-text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.name }}</div>
+                            <div style="font:400 12px/1.3 var(--wc-font-sans);color:var(--wc-text-micro)">{{ f.size }}</div>
+                          </div>
+                          <a href="#download" sc-camel-on-click="{{ noop }}" style="font:400 12px/1 var(--wc-font-sans)">Download</a>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+
+        </main>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isEmail }}">
+    <div style="flex:1;padding:32px 24px 56px">
+      <div style="max-width:760px;margin:0 auto">
+        <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px">
+          <h1 style="margin:0;font:var(--wc-weight-bold) 18px/1.2 var(--wc-font-sans);color:var(--wc-text)">Screen A — what the employer or RTO receives</h1>
+          <span style="font:400 13px/1.4 var(--wc-font-sans);color:var(--wc-text-muted)">Sent the moment the applicant submits, to the address entered at step 3.</span>
+        </div>
+        <div style="background:#fff;border:1px solid var(--wc-border);border-radius:8px;box-shadow:0 1px 2px rgba(16,24,40,.04);overflow:hidden">
+          <div style="border-bottom:1px solid #e9edf0;padding:16px 22px;display:grid;gap:7px">
+            <div style="display:flex;gap:10px;font:400 13px/1.4 var(--wc-font-sans)"><span style="flex:0 0 76px;color:var(--wc-text-micro)">From</span><span style="color:var(--wc-text)">Shared Tables Awards &lt;awards@sharedtables.org.au&gt;</span></div>
+            <div style="display:flex;gap:10px;font:400 13px/1.4 var(--wc-font-sans)"><span style="flex:0 0 76px;color:var(--wc-text-micro)">To</span><span style="color:var(--wc-text)">d.orsini@holmesglen.edu.au</span></div>
+            <div style="display:flex;gap:10px;font:400 13px/1.4 var(--wc-font-sans)"><span style="flex:0 0 76px;color:var(--wc-text-micro)">Subject</span><span style="font-weight:600;color:var(--wc-text)">Please confirm Priya Raghunathan's award application — STT-2026-0039</span></div>
+            <div style="display:flex;gap:10px;font:400 13px/1.4 var(--wc-font-sans)"><span style="flex:0 0 76px;color:var(--wc-text-micro)">Received</span><span style="color:var(--wc-text-muted)">Tue, 23 Jun 2026 14:08</span></div>
+          </div>
+          <div style="background:#F6F6F3;padding:28px 22px 34px">
+            <div style="max-width:600px;margin:0 auto;background:#fff;border:1px solid #E3E3DF;font-family:Montserrat,sans-serif;color:#2F3337;font-weight:300">
+              <div style="height:4px;background:#7EBE2C"></div>
+              <div style="padding:30px 34px 34px">
+                <div style="font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#2F3337;margin-bottom:26px">Shared Tables</div>
+                <h2 style="margin:0 0 6px;font-weight:300;font-size:22px;line-height:1.3">Priya Raghunathan has named you as her endorser</h2>
+                <div style="height:3px;width:48px;background:#7EBE2C;margin:16px 0 20px"></div>
+                <p style="margin:0 0 14px;font-size:14px;line-height:1.7">Dear Chef Orsini,</p>
+                <p style="margin:0 0 14px;font-size:14px;line-height:1.7">Priya has applied for the 2026 Shared Tables Thierry Marx Career Development Award — ten days in the kitchen of the Mandarin Oriental, Paris — and has listed you at Holmesglen Institute as the employer or RTO endorsing her nomination.</p>
+                <p style="margin:0 0 14px;font-size:14px;line-height:1.7">Her complete application is attached and shown on the confirmation page. Read it, then tick two declarations and sign with your name. There is no login and no account to create; it takes about ninety seconds.</p>
+                <div style="border-left:3px solid #7EBE2C;background:#F6F6F3;padding:14px 18px;margin:20px 0 22px;font-size:13.5px;line-height:1.65">
+                  <b style="font-weight:600">Her entry is not complete until you confirm.</b> Applications close at <b style="font-weight:600">5pm, Wednesday 8 July 2026</b>, and this link expires then.
+                </div>
+                <button type="button" sc-camel-on-click="{{ goSignoff }}" style="font-family:Montserrat,sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:15px 30px;border:0;border-radius:2px;background:#4C7519;color:#fff;cursor:pointer" style-hover="background:#3D5E14">Review and confirm</button>
+                <p style="margin:22px 0 0;font-size:13px;line-height:1.7;color:#6E6E67">Reference STT-2026-0039. If Priya should not have named you, choose Decline on the same page and we will let her know. Questions: Tom Milligan, 0424 887 692.</p>
+              </div>
+              <div style="border-top:1px solid #E3E3DF;padding:16px 34px;font-size:11.5px;line-height:1.6;color:#8A8A80">
+                Shared Tables · Award partners: Holmesglen Institute, Le Cordon Bleu Melbourne, Sher Wagyu<br>
+                Attached: STT-2026-0039-Raghunathan.pdf (4 pages)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:14px;font:400 13px/1.6 var(--wc-font-sans);color:var(--wc-text-muted)">The applicant gets a matching acknowledgement with her reference number, a copy of the submission, the line “your entry is not complete until your employer confirms”, and a resend control in case the address was wrong.</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isSignoff }}">
+    <div style="flex:1;background:#F6F6F3;font-family:Montserrat,sans-serif;color:#2F3337">
+      <div style="background:#2F3337;color:#fff;padding:14px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+        <span style="font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase">Shared Tables</span>
+        <span style="width:1px;height:16px;background:#5A5E62"></span>
+        <span style="font-size:13px;font-weight:300">Employer or RTO confirmation</span>
+        <div style="flex:1"></div>
+        <span style="font-size:12px;font-weight:300;color:#C9C9C0">No login required · about 90 seconds</span>
+      </div>
+
+      <div style="max-width:900px;margin:0 auto;padding:30px 24px 60px">
+
+        <sc-if value="{{ notSigned }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <h1 style="margin:0 0 8px;font-weight:300;font-size:clamp(22px,2.6vw,29px);line-height:1.25">Confirm Priya Raghunathan's application</h1>
+            <div style="height:3px;width:56px;background:#7EBE2C;margin-bottom:18px"></div>
+            <p style="margin:0 0 26px;font-weight:300;font-size:16px;line-height:1.7;max-width:70ch">Priya has named you as the employer or RTO endorsing her nomination for the 2026 Thierry Marx Career Development Award. Read her application below, then tick both declarations and sign. Her entry is not complete until you do, and this page closes at 5pm, Wednesday 8 July 2026.</p>
+
+            <div style="border:1px solid #E3E3DF;background:#fff;margin-bottom:30px">
+              <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid #E3E3DF;background:#F6F6F3;padding:12px 18px;font-size:12.5px;color:#6E6E67">
+                <span style="font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:11px;color:#2F3337">The application you are endorsing</span>
+                <div style="flex:1"></div>
+                <span>STT-2026-0039 · 4 pages</span>
+                <a href="#pdf" sc-camel-on-click="{{ noop }}" style="color:#4C7519;font-weight:500">Download PDF</a>
+              </div>
+              <div style="max-height:520px;overflow:auto">
+                <dc-import name="ApplicationDocument" hint-size="100%,1400px"></dc-import>
+              </div>
+            </div>
+
+            <div style="border:1px solid #E3E3DF;background:#fff;padding:26px 28px 30px">
+              <h2 style="margin:0 0 6px;font-weight:600;font-size:16px">Your declarations</h2>
+              <p style="margin:0 0 20px;font-size:13.5px;color:#6E6E67;max-width:64ch">Both are required. They are recorded against the application with your name, the date and the time.</p>
+              <div style="display:grid;gap:14px;margin-bottom:22px">
+                <div sc-camel-on-click="{{ toggleT1 }}" style="display:flex;gap:13px;align-items:flex-start;border:1px solid #E3E3DF;border-left:3px solid #7EBE2C;padding:15px 17px;cursor:pointer;background:#fff" style-hover="background:#FBFBF8">
+                  <span style="flex:0 0 auto;width:18px;height:18px;border:1px solid #9C9B8C;background:#fff;display:grid;place-items:center;margin-top:2px">
+                    <sc-if value="{{ t1 }}"><span style="width:11px;height:11px;background:#4C7519;display:block"></span></sc-if>
+                  </span>
+                  <span style="font-size:13.5px;line-height:1.6;font-weight:300">I have read and agree to the terms and conditions of the 2026 Shared Tables Thierry Marx Career Development Award, and I agree for my chef, apprentice or student to participate in the competition.</span>
+                </div>
+                <div sc-camel-on-click="{{ toggleT2 }}" style="display:flex;gap:13px;align-items:flex-start;border:1px solid #E3E3DF;border-left:3px solid #7EBE2C;padding:15px 17px;cursor:pointer;background:#fff" style-hover="background:#FBFBF8">
+                  <span style="flex:0 0 auto;width:18px;height:18px;border:1px solid #9C9B8C;background:#fff;display:grid;place-items:center;margin-top:2px">
+                    <sc-if value="{{ t2 }}"><span style="width:11px;height:11px;background:#4C7519;display:block"></span></sc-if>
+                  </span>
+                  <span style="font-size:13.5px;line-height:1.6;font-weight:300">I acknowledge that Work Cover remains the responsibility of the employer and/or RTO leading up to and on the day of the competition final.</span>
+                </div>
+              </div>
+              <div style="display:grid;gap:7px;max-width:420px;margin-bottom:22px">
+                <label for="sigName" style="font-size:13px;font-weight:600">Your full name</label>
+                <input id="sigName" type="text" placeholder="Daniel Orsini" sc-camel-on-input="{{ onSig }}" style="font-family:Montserrat,sans-serif;font-size:14px;font-weight:300;color:#2F3337;padding:12px 13px;border:1px solid #D2D2CB;border-radius:2px;background:#fff;width:100%" style-focus="border-color:#4C7519;outline:none">
+                <span style="font-size:12px;color:#6E6E67">This is your electronic signature. Signing as Head Teacher, Patisserie, Holmesglen Institute.</span>
+              </div>
+              <sc-if value="{{ err }}">
+                <p style="margin:0 0 18px;font-size:12.5px;font-weight:600;color:#C0392B">Tick both declarations and enter your name before confirming.</p>
+              </sc-if>
+              <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+                <button type="button" sc-camel-on-click="{{ confirmSignoff }}" style="font-family:Montserrat,sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:15px 34px;border:0;border-radius:2px;background:#4C7519;color:#fff;cursor:pointer" style-hover="background:#3D5E14">Confirm application</button>
+                <button type="button" sc-camel-on-click="{{ declineSignoff }}" style="font-family:Montserrat,sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;border:1px solid #9C9B8C;border-radius:2px;background:transparent;color:#55554F;cursor:pointer" style-hover="border-color:#2F3337;color:#2F3337">Decline</button>
+                <span style="font-size:12.5px;color:#6E6E67">Declining tells Priya straight away and closes the entry.</span>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isApprovedView }}">
+          <div style="border:1px solid #E3E3DF;background:#fff;padding:40px 34px 44px;text-align:center">
+            <div style="width:46px;height:46px;border-radius:50%;background:#4C7519;color:#fff;display:grid;place-items:center;font-size:22px;margin:0 auto 20px">✓</div>
+            <h1 style="margin:0 0 6px;font-weight:300;font-size:clamp(21px,2.6vw,27px);line-height:1.25">Confirmed. Thank you.</h1>
+            <div style="height:3px;width:56px;background:#7EBE2C;margin:0 auto 22px"></div>
+            <p style="margin:0 auto 10px;font-weight:300;font-size:16px;line-height:1.7;max-width:52ch">Priya Raghunathan's entry for the 2026 Thierry Marx Career Development Award is now complete. We have told her, and the award team has been notified.</p>
+            <p style="margin:0 auto 26px;font-size:13px;color:#6E6E67;max-width:52ch">Signed by <b style="font-weight:600;color:#2F3337">{{ sigName }}</b> · {{ signedAt }} · reference STT-2026-0039. A copy of the signed application has been emailed to you.</p>
+            <button type="button" sc-camel-on-click="{{ goQueue }}" style="font-family:Montserrat,sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;border:1px solid #9C9B8C;border-radius:2px;background:transparent;color:#55554F;cursor:pointer" style-hover="border-color:#2F3337;color:#2F3337">Back to the admin queue</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isDeclinedView }}">
+          <div style="border:1px solid #E3E3DF;background:#fff;padding:40px 34px 44px;text-align:center">
+            <div style="width:46px;height:46px;border-radius:50%;background:#EDEDE8;color:#55554F;display:grid;place-items:center;font-size:22px;margin:0 auto 20px">—</div>
+            <h1 style="margin:0 0 6px;font-weight:300;font-size:clamp(21px,2.6vw,27px);line-height:1.25">Declined</h1>
+            <div style="height:3px;width:56px;background:#7EBE2C;margin:0 auto 22px"></div>
+            <p style="margin:0 auto 26px;font-weight:300;font-size:16px;line-height:1.7;max-width:52ch">We have recorded that you are not endorsing this nomination and have let Priya know. No further action is needed from you.</p>
+            <button type="button" sc-camel-on-click="{{ goQueue }}" style="font-family:Montserrat,sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;border:1px solid #9C9B8C;border-radius:2px;background:transparent;color:#55554F;cursor:pointer" style-hover="border-color:#2F3337;color:#2F3337">Back to the admin queue</button>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ menu }}">
+    <div>
+      <div sc-camel-on-click="{{ closeMenu }}" style="position:fixed;inset:0;z-index:60"></div>
+      <div style="{{ menuStyle }}">
+        <button type="button" sc-camel-on-click="{{ menuDetails }}" style="display:block;width:100%;text-align:left;height:32px;padding:0 14px;border:0;background:transparent;cursor:pointer;font:400 13px/32px var(--wc-font-sans);color:var(--wc-text)" style-hover="background:var(--wc-gray-50)">Details</button>
+        <button type="button" sc-camel-on-click="{{ menuPdf }}" style="display:block;width:100%;text-align:left;height:32px;padding:0 14px;border:0;background:transparent;cursor:pointer;font:400 13px/32px var(--wc-font-sans);color:var(--wc-text)" style-hover="background:var(--wc-gray-50)">Print as PDF</button>
+        <button type="button" sc-camel-on-click="{{ menuWord }}" style="display:block;width:100%;text-align:left;height:32px;padding:0 14px;border:0;background:transparent;cursor:pointer;font:400 13px/32px var(--wc-font-sans);color:var(--wc-text)" style-hover="background:var(--wc-gray-50)">Print as Word</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ toast }}">
+    <div style="position:fixed;right:22px;bottom:22px;z-index:70">
+      <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Toast" tone="{{ toastTone }}" message="{{ toast }}" hint-size="320px,48px"></x-import>
+    </div>
+  </sc-if>
+
+</div>

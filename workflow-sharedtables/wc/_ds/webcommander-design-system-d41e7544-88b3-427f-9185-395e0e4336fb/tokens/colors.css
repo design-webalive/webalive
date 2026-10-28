@@ -1,0 +1,74 @@
+:root{
+  /* ---- Brand blue ---- */
+  --wc-blue-50:#e6f4fe;
+  --wc-blue-100:#d3ebfd;
+  --wc-blue-200:#a9d8fb;
+  --wc-blue-400:#33a4f5;
+  --wc-blue-500:#008DF2;  /* primary */
+  --wc-blue-600:#0077cf;  /* hover */
+  --wc-blue-700:#0065b0;  /* pressed */
+  /* Label text on a blue tint (blue-50/#E5F3FD): blue-500 is only 3.06:1 there.
+     Keep separate from --wc-blue-500 — do not collapse. */
+  --wc-blue-on-tint:#006AB8;  /* 4.93:1 on #E5F3FD */
+
+  /* Promo / marketing banner blue (deeper, indigo-leaning) */
+  --wc-promo-from:#3d61d9;
+  --wc-promo-to:#2b47b8;
+
+  /* ---- Neutrals ---- */
+  --wc-white:#ffffff;
+  --wc-gray-25:#fafbfc;
+  --wc-gray-50:#f4f6f7;
+  --wc-gray-100:#eef1f3;
+  --wc-gray-150:#e9edf0;
+  --wc-gray-200:#e5e7eb;
+  --wc-gray-300:#d6dade;
+  --wc-gray-400:#b6bdc5;
+  --wc-gray-500:#8b949e;
+  --wc-gray-600:#6b7480;
+  --wc-gray-700:#4d5662;
+  --wc-gray-800:#2c333d;
+  --wc-gray-900:#1a1f26;
+
+  /* ---- Semantic ---- */
+  --wc-green-text:#16a34a;
+  --wc-green-dot:#22c55e;
+  --wc-green-bg:#dcfce7;
+  --wc-green-bg-soft:#e9f9ef;
+  --wc-amber-text:#b45309;
+  --wc-amber-icon:#ea9214;
+  --wc-amber-bg:#fff7ed;
+  --wc-amber-bg-strong:#fdeccd;
+  --wc-red-text:#dc2626;
+  --wc-red-bg:#fef2f2;
+  --wc-red-bg-strong:#fde3e3;
+  --wc-cyan-500:#22c1d6;   /* analytics bar/line charts */
+
+  /* ---- AI surfaces ---- */
+  --wc-ai-purple:#7c5cff;
+  --wc-ai-purple-deep:#6d28d9;
+  --wc-ai-bg:#f1eeff;
+  --wc-ai-panel-from:#f3f0ff;
+  --wc-ai-panel-to:#ecf3ff;
+
+  /* ---- Semantic aliases ---- */
+  --wc-canvas:var(--wc-gray-100);
+  --wc-canvas-editor:var(--wc-gray-50);
+  --wc-surface:var(--wc-white);
+  --wc-surface-sunken:var(--wc-gray-50);
+  --wc-surface-hover:var(--wc-gray-50);
+  --wc-surface-selected:var(--wc-blue-50);
+  --wc-border:var(--wc-gray-200);
+  --wc-border-strong:var(--wc-gray-300);
+  --wc-divider:var(--wc-gray-150);
+  --wc-text:var(--wc-gray-900);
+  --wc-text-secondary:var(--wc-gray-700);
+  --wc-text-muted:var(--wc-gray-600);
+  --wc-text-micro:var(--wc-gray-500);
+  --wc-text-inverse:var(--wc-white);
+  --wc-link:var(--wc-blue-500);
+  --wc-link-hover:var(--wc-blue-600);
+  --wc-focus-ring:rgba(0,141,242,.28);
+  --wc-toolbar-dark:#1f2733;
+  --wc-scrim:rgba(24,31,40,.34);
+}

@@ -1,0 +1,5 @@
+/* WebCommander ships 'Source Sans 3' as its single UI family.
+   No binaries were supplied with the source screenshots, so the family is
+   loaded from Google Fonts. Drop real .woff2 files into assets/fonts/ and
+   replace this import with @font-face rules if self-hosting is required. */
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap");

@@ -1,0 +1,36 @@
+:root{
+  --wc-font-sans:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --wc-font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+  --wc-weight-regular:400;
+  --wc-weight-medium:500;
+  --wc-weight-semibold:600;
+  --wc-weight-bold:700;
+
+  /* scale (px sizes as used across the admin) */
+  --wc-size-micro:11px;   /* uppercase stat labels, version string */
+  --wc-size-caption:12px; /* table headers, meta */
+  --wc-size-sm:13px;      /* dense table cells, sidebar controls */
+  --wc-size-body:14px;    /* default body / form labels */
+  --wc-size-body-lg:15px; /* card body copy, list titles */
+  --wc-size-title:17px;   /* topbar page title, card headings */
+  --wc-size-h3:20px;      /* section headings inside cards */
+  --wc-size-h2:26px;      /* stat numerals, page titles */
+  --wc-size-h1:30px;      /* greeting / page hero */
+
+  --wc-lh-tight:1.2; /* @kind other */
+  --wc-lh-snug:1.35; /* @kind other */
+  --wc-lh-normal:1.5; /* @kind other */
+  --wc-lh-relaxed:1.6; /* @kind other */
+
+  --wc-ls-micro:.06em;    /* uppercase micro labels */
+  --wc-ls-nav:.04em;      /* sidebar nav labels */
+  --wc-ls-tight:-.01em;   /* big numerals */
+
+  /* composed roles */
+  --wc-text-micro-label:var(--wc-weight-semibold) var(--wc-size-micro)/1.3 var(--wc-font-sans);
+  --wc-text-nav:var(--wc-weight-semibold) 10px/1.2 var(--wc-font-sans);
+  --wc-text-body:var(--wc-weight-regular) var(--wc-size-body)/var(--wc-lh-normal) var(--wc-font-sans);
+  --wc-text-page-title:var(--wc-weight-bold) var(--wc-size-title)/1.3 var(--wc-font-sans);
+  --wc-text-stat:var(--wc-weight-bold) var(--wc-size-h2)/1.15 var(--wc-font-sans);
+}
