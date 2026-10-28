@@ -662,16 +662,31 @@
                     </sc-if>
 
                     <sc-if value="{{ isCustom }}" hint-placeholder-val="{{ false }}">
-                      <sc-for list="{{ customRows }}" as="cr" hint-placeholder-count="3">
-                        <div style="display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding: 16px 24px; border-top: 1px solid var(--wc-divider)">
-                          <span style="flex: 1 1 200px; min-width: 0"><span style="display: block; font: 600 14px/1.3 var(--wc-font-sans)">{{ cr.label }}</span><span style="display: block; margin-top: 4px; font: 400 12.5px/1.45 var(--wc-font-sans); color: var(--wc-text-muted)">{{ cr.desc }}</span></span>
-                          <span style="flex: 0 1 300px; max-width: 100%; min-width: 0; font: 400 14px/1.4 var(--wc-font-sans); color: var(--wc-text-secondary)">{{ cr.value }}</span>
+                      <sc-for list="{{ customFields }}" as="cf" hint-placeholder-count="4">
+                        <div style="display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; padding: 16px 24px; border-top: 1px solid var(--wc-divider)">
+                          <span style="flex: 1 1 200px; min-width: 0"><span style="display: block; font: 600 14px/1.3 var(--wc-font-sans)">{{ cf.label }}</span><span style="display: block; margin-top: 4px; font: 400 12.5px/1.45 var(--wc-font-sans); color: var(--wc-text-muted)">{{ cf.desc }}</span></span>
+                          <sc-if value="{{ cf.isSelect }}" hint-placeholder-val="{{ true }}">
+                            <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ cf.value }}" options="{{ cf.options }}" onChange="{{ cf.onChange }}" width="{{ 300 }}" hint-size="300px,36px"></x-import>
+                          </sc-if>
+                          <sc-if value="{{ cf.isText }}" hint-placeholder-val="{{ false }}">
+                            <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Input" value="{{ cf.value }}" onChange="{{ cf.onChange }}" width="{{ 300 }}" hint-size="300px,36px"></x-import>
+                          </sc-if>
+                          <sc-if value="{{ cf.isNumber }}" hint-placeholder-val="{{ false }}">
+                            <span style="width: 300px; max-width: 100%; display: flex; align-items: center; gap: 10px"><x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Input" value="{{ cf.value }}" onChange="{{ cf.onChange }}" width="80px" hint-size="80px,36px"></x-import><span style="font: 400 13px/1.3 var(--wc-font-sans); color: var(--wc-text-secondary)">{{ cf.suffix }}</span></span>
+                          </sc-if>
+                          <sc-if value="{{ cf.isSwitch }}" hint-placeholder-val="{{ false }}">
+                            <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Switch" checked="{{ cf.checked }}" onChange="{{ cf.onFlip }}" hint-size="38px,20px"></x-import>
+                          </sc-if>
+                          <sc-if value="{{ cf.isTier }}" hint-placeholder-val="{{ false }}">
+                            <span style="width: 300px; max-width: 100%; display: grid; grid-template-columns: 96px 16px minmax(0, 1fr); gap: 8px; align-items: center">
+                              <span><sc-if value="{{ cf.hasMax }}" hint-placeholder-val="{{ true }}"><x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Input" value="{{ cf.max }}" onChange="{{ cf.setMax }}" width="96px" hint-size="96px,36px"></x-import></sc-if></span>
+                              <span style="display: flex; color: var(--wc-text-muted)"><x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Icon" name="arrow-right" size="{{ 14 }}" hint-size="14px,14px"></x-import></span>
+                              <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ cf.value }}" options="{{ cf.options }}" onChange="{{ cf.onChange }}" width="100%" hint-size="100%,36px"></x-import>
+                            </span>
+                          </sc-if>
                         </div>
                       </sc-for>
-                      <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 16px 24px 20px; border-top: 1px solid var(--wc-divider)">
-                        <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Button" variant="secondary" icon="pencil" onClick="{{ editCustom }}" hint-size="110px,36px">Edit step</x-import>
-                        <span style="flex: 1 1 240px; font: 400 12.5px/1.45 var(--wc-font-sans); color: var(--wc-text-muted)">If this step fails it retries 3 times, then Workflow Admins are alerted. Failed runs can be retried from the Activity log.</span>
-                      </div>
+                      <div style="padding: 16px 24px 20px; border-top: 1px solid var(--wc-divider); font: 400 12.5px/1.45 var(--wc-font-sans); color: var(--wc-text-muted)">Changes save as you go. If this step fails it retries 3 times, then Workflow Admins are alerted. Failed runs can be retried from the Activity log.</div>
                     </sc-if>
                   </div>
                 </div>
@@ -1044,270 +1059,6 @@
     </div>
   </sc-if>
 
-  <sc-if value="{{ addOpen }}" hint-placeholder-val="{{ false }}">
-    <div style="position: fixed; inset: 0; background: rgba(24,31,40,.34); display: grid; place-items: center; z-index: 50">
-      <div style="width: 720px; max-width: calc(100vw - 40px); max-height: calc(100vh - 40px); display: flex; flex-direction: column; background: #fff; border-radius: 12px; box-shadow: 0 24px 48px -12px rgba(16,24,40,.24)">
-        <div style="flex: none; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 18px 24px; border-bottom: 1px solid var(--wc-divider)">
-          <span style="display: flex; flex-direction: column; gap: 4px">
-            <span style="font: 600 17px/1.3 var(--wc-font-sans)">{{ addTitle }}</span>
-            <span style="font: 400 12.5px/1.4 var(--wc-font-sans); color: var(--wc-text-muted)">{{ addSub }}</span>
-          </span>
-          <span onClick="{{ closeAdd }}" style="cursor: pointer; color: var(--wc-text-muted)"><x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Icon" name="x" size="{{ 18 }}" hint-size="18px,18px"></x-import></span>
-        </div>
-
-        <div style="flex: 1; min-height: 0; overflow: auto">
-          <sc-if value="{{ isAddPick }}" hint-placeholder-val="{{ true }}">
-            <div style="padding: 20px 24px; display: flex; flex-direction: column; gap: 18px">
-              <sc-for list="{{ addGroups }}" as="g" hint-placeholder-count="4">
-                <div style="display: flex; flex-direction: column; gap: 8px">
-                  <span style="font: 600 11px/1 var(--wc-font-sans); letter-spacing: .06em; color: var(--wc-text-muted)">{{ g.label }}</span>
-                  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px">
-                    <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="2">
-                      <div onClick="{{ it.onClick }}" style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 8px; border: 1px solid {{ it.border }}; background: {{ it.bg }}; opacity: {{ it.opacity }}; cursor: {{ it.cursor }}" style-hover="border-color: var(--wc-blue-500)">
-                        <span style="flex: none; width: 30px; height: 30px; border-radius: 8px; background: var(--wc-gray-100); display: grid; place-items: center; color: var(--wc-gray-800)"><x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Icon" name="{{ it.icon }}" size="{{ 15 }}" hint-size="15px,15px"></x-import></span>
-                        <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
-                          <span style="font: 600 10px/1 var(--wc-font-sans); letter-spacing: .06em; color: var(--wc-text-muted)">{{ it.kicker }}</span>
-                          <span style="font: 600 14px/1.3 var(--wc-font-sans)">{{ it.name }}</span>
-                          <span style="font: 400 12.5px/1.45 var(--wc-font-sans); color: var(--wc-text-muted)">{{ it.desc }}</span>
-                        </span>
-                      </div>
-                    </sc-for>
-                  </div>
-                </div>
-              </sc-for>
-            </div>
-          </sc-if>
-
-          <sc-if value="{{ isAddConfig }}" hint-placeholder-val="{{ false }}">
-            <div style="display: flex; align-items: center; gap: 12px; padding: 14px 24px; background: var(--wc-gray-50); border-bottom: 1px solid var(--wc-divider)">
-              <span style="flex: none; width: 32px; height: 32px; border-radius: 8px; background: var(--wc-blue-500); color: #fff; display: grid; place-items: center"><x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Icon" name="{{ addTypeIcon }}" size="{{ 16 }}" hint-size="16px,16px"></x-import></span>
-              <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font: 600 14px/1.3 var(--wc-font-sans)">{{ addTypeName }}</span><span style="font: 400 12.5px/1.4 var(--wc-font-sans); color: var(--wc-text-muted)">{{ addTypeDesc }}</span></span>
-              <sc-if value="{{ canChangeType }}" hint-placeholder-val="{{ true }}"><span onClick="{{ backAdd }}" style="font: 600 13px/1 var(--wc-font-sans); color: var(--wc-link); cursor: pointer">Change</span></sc-if>
-            </div>
-            <div style="padding: 20px 24px; display: flex; flex-direction: column; gap: 18px">
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
-                <div style="display: flex; flex-direction: column; gap: 6px">
-                  <span style="font: 600 13px/1 var(--wc-font-sans)">Step name</span>
-                  <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Input" value="{{ dName }}" onChange="{{ setDName }}" width="100%" hint-size="100%,36px"></x-import>
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 6px">
-                  <span style="font: 600 13px/1 var(--wc-font-sans)">Runs when status becomes</span>
-                  <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dWhen }}" options="{{ whenOptions }}" onChange="{{ setDWhen }}" width="100%" hint-size="100%,36px"></x-import>
-                </div>
-                <sc-if value="{{ notEditing }}" hint-placeholder-val="{{ true }}">
-                  <div style="display: flex; flex-direction: column; gap: 6px">
-                    <span style="font: 600 13px/1 var(--wc-font-sans)">Position</span>
-                    <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dPos }}" options="{{ posOptions }}" onChange="{{ setDPos }}" width="100%" hint-size="100%,36px"></x-import>
-                  </div>
-                </sc-if>
-              </div>
-
-              <div style="height: 1px; background: var(--wc-divider)"></div>
-
-              <sc-if value="{{ isAddApproval }}" hint-placeholder-val="{{ false }}">
-                <div style="display: flex; flex-direction: column; gap: 16px">
-                  <div style="display: flex; flex-direction: column; gap: 10px">
-                    <span style="font: 600 13px/1 var(--wc-font-sans)">Who approves</span>
-                    <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.RadioGroup" options="{{ apSrcOptions }}" value="{{ dApSrc }}" onChange="{{ setDApSrc }}" hint-size="100%,80px"></x-import>
-                  </div>
-                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
-                    <sc-if value="{{ apIsField }}" hint-placeholder-val="{{ true }}">
-                      <div style="display: flex; flex-direction: column; gap: 6px">
-                        <span style="font: 600 13px/1 var(--wc-font-sans)">Approver email field</span>
-                        <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dApField }}" options="{{ apFieldOptions }}" onChange="{{ setDApField }}" width="100%" hint-size="100%,36px"></x-import>
-                        <span style="font: 400 12px/1.4 var(--wc-font-sans); color: var(--wc-text-muted)">External approver, no login. Gets a single-use secure link.</span>
-                      </div>
-                    </sc-if>
-                    <sc-if value="{{ apIsUser }}" hint-placeholder-val="{{ false }}">
-                      <div style="display: flex; flex-direction: column; gap: 6px">
-                        <span style="font: 600 13px/1 var(--wc-font-sans)">User</span>
-                        <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dApUser }}" options="{{ apUserOptions }}" onChange="{{ setDApUser }}" width="100%" hint-size="100%,36px"></x-import>
-                      </div>
-                    </sc-if>
-                    <sc-if value="{{ apIsGroup }}" hint-placeholder-val="{{ false }}">
-                      <div style="display: flex; flex-direction: column; gap: 6px">
-                        <span style="font: 600 13px/1 var(--wc-font-sans)">Group</span>
-                        <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dApGroup }}" options="{{ apGroupOptions }}" onChange="{{ setDApGroup }}" width="100%" hint-size="100%,36px"></x-import>
-                      </div>
-                      <div style="display: flex; flex-direction: column; gap: 6px">
-                        <span style="font: 600 13px/1 var(--wc-font-sans)">Order</span>
-                        <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dApMode }}" options="{{ apModeOptions }}" onChange="{{ setDApMode }}" width="100%" hint-size="100%,36px"></x-import>
-                      </div>
-                    </sc-if>
-                    <div style="display: flex; flex-direction: column; gap: 6px">
-                      <span style="font: 600 13px/1 var(--wc-font-sans)">Link expiry</span>
-                      <span style="display: flex; align-items: center; gap: 10px"><x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Input" value="{{ dExpiry }}" onChange="{{ setDExpiry }}" width="80px" hint-size="80px,36px"></x-import><span style="font: 400 13px/1 var(--wc-font-sans); color: var(--wc-text-secondary)">days after it is sent</span></span>
-                    </div>
-                  </div>
-                  <sc-if value="{{ apIsGroup }}" hint-placeholder-val="{{ false }}">
-                    <div style="border: 1px solid var(--wc-divider); border-radius: 8px; overflow: hidden">
-                      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--wc-gray-50)">
-                        <span style="flex: 1; display: flex; flex-direction: column; gap: 3px"><span style="font: 600 13px/1.2 var(--wc-font-sans)">Approval limits</span><span style="font: 400 12px/1.4 var(--wc-font-sans); color: var(--wc-text-muted)">Route to a different group based on an amount on the record</span></span>
-                        <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Switch" checked="{{ dLimitsOn }}" onChange="{{ flipDLimitsOn }}" hint-size="36px,20px"></x-import>
-                      </div>
-                      <sc-if value="{{ dLimitsOn }}" hint-placeholder-val="{{ false }}">
-                        <div style="padding: 14px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--wc-divider)">
-                          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap">
-                            <span style="font: 400 13px/1 var(--wc-font-sans); color: var(--wc-text-secondary)">Compare</span>
-                            <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dLimitField }}" options="{{ limitFieldOptions }}" onChange="{{ setDLimitField }}" width="180px" hint-size="180px,36px"></x-import>
-                          </div>
-                          <sc-for list="{{ tierRows }}" as="tr" hint-placeholder-count="3">
-                            <div style="display: grid; grid-template-columns: 70px 110px 20px minmax(0, 1fr); gap: 10px; align-items: center">
-                              <span style="font: 400 13px/1 var(--wc-font-sans); color: var(--wc-text-secondary)">{{ tr.label }}</span>
-                              <span>
-                                <sc-if value="{{ tr.notLast }}" hint-placeholder-val="{{ true }}"><x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Input" value="{{ tr.max }}" onChange="{{ tr.setMax }}" width="110px" hint-size="110px,36px"></x-import></sc-if>
-                              </span>
-                              <span style="color: var(--wc-text-muted); display: flex"><x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Icon" name="arrow-right" size="{{ 14 }}" hint-size="14px,14px"></x-import></span>
-                              <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ tr.who }}" options="{{ limitGroupOptions }}" onChange="{{ tr.setWho }}" width="100%" hint-size="100%,36px"></x-import>
-                            </div>
-                          </sc-for>
-                        </div>
-                      </sc-if>
-                    </div>
-                  </sc-if>
-                </div>
-              </sc-if>
-
-              <sc-if value="{{ isAddEmail }}" hint-placeholder-val="{{ false }}">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
-                  <div style="display: flex; flex-direction: column; gap: 6px">
-                    <span style="font: 600 13px/1 var(--wc-font-sans)">Send to</span>
-                    <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dTo }}" options="{{ toOptions }}" onChange="{{ setDTo }}" width="100%" hint-size="100%,36px"></x-import>
-                  </div>
-                  <div style="display: flex; flex-direction: column; gap: 6px">
-                    <span style="font: 600 13px/1 var(--wc-font-sans)">Email</span>
-                    <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dTemplate }}" options="{{ templateOptions }}" onChange="{{ setDTemplate }}" width="100%" hint-size="100%,36px"></x-import>
-                    <span style="font: 400 12px/1.4 var(--wc-font-sans); color: var(--wc-text-muted)">A new email is added to the Emails step for you to write.</span>
-                  </div>
-                </div>
-                <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Checkbox" checked="{{ dAttach }}" onChange="{{ flipDAttach }}" label="Attach the latest PDF of the application" hint-size="300px,20px"></x-import>
-              </sc-if>
-
-              <sc-if value="{{ isAddDocument }}" hint-placeholder-val="{{ false }}">
-                <div style="display: flex; flex-direction: column; gap: 10px">
-                  <span style="font: 600 13px/1 var(--wc-font-sans)">Formats</span>
-                  <span style="display: flex; flex-direction: column; align-items: flex-start; gap: 12px">
-                    <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Checkbox" checked="{{ dPdf }}" onChange="{{ flipDPdf }}" label="PDF" hint-size="60px,20px"></x-import>
-                    <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Checkbox" checked="{{ dWord }}" onChange="{{ flipDWord }}" label="Word (.docx)" hint-size="110px,20px"></x-import>
-                  </span>
-                  <span style="font: 400 12px/1.4 var(--wc-font-sans); color: var(--wc-text-muted)">Uses the layout from the Document step. Files are named {reference}-{applicant_last_name}.</span>
-                </div>
-                <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Checkbox" checked="{{ dAttach }}" onChange="{{ flipDAttach }}" label="Attach to emails sent in the same status" hint-size="300px,20px"></x-import>
-              </sc-if>
-
-              <sc-if value="{{ isAddField }}" hint-placeholder-val="{{ false }}">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
-                  <div style="display: flex; flex-direction: column; gap: 6px">
-                    <span style="font: 600 13px/1 var(--wc-font-sans)">Submission field</span>
-                    <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dField }}" options="{{ fieldOptions }}" onChange="{{ setDField }}" width="100%" hint-size="100%,36px"></x-import>
-                    <span style="font: 400 12px/1.4 var(--wc-font-sans); color: var(--wc-text-muted)">Written back to the Forms plugin so its submissions list can filter by it.</span>
-                  </div>
-                  <div style="display: flex; flex-direction: column; gap: 6px">
-                    <span style="font: 600 13px/1 var(--wc-font-sans)">Value</span>
-                    <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Input" value="{{ dValue }}" onChange="{{ setDValue }}" width="100%" hint-size="100%,36px"></x-import>
-                    <span style="font: 400 12px/1.4 var(--wc-font-sans); color: var(--wc-text-muted)">Text or a merge field, such as {status}.</span>
-                  </div>
-                </div>
-              </sc-if>
-
-              <sc-if value="{{ isAddStatus }}" hint-placeholder-val="{{ false }}">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
-                  <div style="display: flex; flex-direction: column; gap: 6px">
-                    <span style="font: 600 13px/1 var(--wc-font-sans)">Move to</span>
-                    <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dToStatus }}" options="{{ toStatusOptions }}" onChange="{{ setDToStatus }}" width="100%" hint-size="100%,36px"></x-import>
-                  </div>
-                </div>
-                <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Checkbox" checked="{{ dReasonReq }}" onChange="{{ flipDReasonReq }}" label="Reason required, logged in the record timeline" hint-size="320px,20px"></x-import>
-              </sc-if>
-
-              <sc-if value="{{ isAddWait }}" hint-placeholder-val="{{ false }}">
-                <div style="display: flex; flex-direction: column; gap: 6px">
-                  <span style="font: 600 13px/1 var(--wc-font-sans)">Wait for</span>
-                  <span style="display: flex; align-items: center; gap: 10px"><x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Input" value="{{ dDays }}" onChange="{{ setDDays }}" width="80px" hint-size="80px,36px"></x-import><span style="font: 400 13px/1 var(--wc-font-sans); color: var(--wc-text-secondary)">days, then continue at 9:00am Melbourne time</span></span>
-                </div>
-                <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Checkbox" checked="{{ dCancelOnReply }}" onChange="{{ flipDCancelOnReply }}" label="Stop waiting if the approver responds" hint-size="280px,20px"></x-import>
-              </sc-if>
-
-              <sc-if value="{{ isAddCondition }}" hint-placeholder-val="{{ false }}">
-                <div style="display: flex; flex-direction: column; gap: 6px">
-                  <span style="font: 600 13px/1 var(--wc-font-sans)">If</span>
-                  <div style="display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1fr) minmax(0,1.2fr); gap: 10px">
-                    <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dCField }}" options="{{ cFieldOptions }}" onChange="{{ setDCField }}" width="100%" hint-size="100%,36px"></x-import>
-                    <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dCOp }}" options="{{ cOpOptions }}" onChange="{{ setDCOp }}" width="100%" hint-size="100%,36px"></x-import>
-                    <sc-if value="{{ cNeedsValue }}" hint-placeholder-val="{{ true }}">
-                      <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Input" value="{{ dCValue }}" placeholder="Value" onChange="{{ setDCValue }}" width="100%" hint-size="100%,36px"></x-import>
-                    </sc-if>
-                  </div>
-                </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
-                  <div style="display: flex; flex-direction: column; gap: 6px">
-                    <span style="display: flex; align-items: center; gap: 6px; font: 600 13px/1 var(--wc-font-sans)"><x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Icon" name="check" size="{{ 14 }}" hint-size="14px,14px"></x-import>Then move to</span>
-                    <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dCThen }}" options="{{ toStatusOptions }}" onChange="{{ setDCThen }}" width="100%" hint-size="100%,36px"></x-import>
-                  </div>
-                  <div style="display: flex; flex-direction: column; gap: 6px">
-                    <span style="display: flex; align-items: center; gap: 6px; font: 600 13px/1 var(--wc-font-sans)"><x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Icon" name="corner-down-right" size="{{ 14 }}" hint-size="14px,14px"></x-import>Otherwise move to</span>
-                    <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dCElse }}" options="{{ toStatusOptions }}" onChange="{{ setDCElse }}" width="100%" hint-size="100%,36px"></x-import>
-                  </div>
-                </div>
-                <span style="font: 400 12px/1.4 var(--wc-font-sans); color: var(--wc-text-muted)">Steps that run on the new status pick up from there. Comparisons ignore letter case.</span>
-              </sc-if>
-
-              <sc-if value="{{ isAddWebhook }}" hint-placeholder-val="{{ false }}">
-                <div style="display: grid; grid-template-columns: 110px minmax(0,1fr); gap: 10px; align-items: end">
-                  <div style="display: flex; flex-direction: column; gap: 6px">
-                    <span style="font: 600 13px/1 var(--wc-font-sans)">Method</span>
-                    <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dMethod }}" options="{{ methodOptions }}" onChange="{{ setDMethod }}" width="100%" hint-size="100%,36px"></x-import>
-                  </div>
-                  <div style="display: flex; flex-direction: column; gap: 6px">
-                    <span style="font: 600 13px/1 var(--wc-font-sans)">Endpoint URL</span>
-                    <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Input" value="{{ dUrl }}" onChange="{{ setDUrl }}" width="100%" hint-size="100%,36px"></x-import>
-                  </div>
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 6px; max-width: 320px">
-                  <span style="font: 600 13px/1 var(--wc-font-sans)">Payload</span>
-                  <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dPayload }}" options="{{ payloadOptions }}" onChange="{{ setDPayload }}" width="100%" hint-size="100%,36px"></x-import>
-                </div>
-                <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Checkbox" checked="{{ dSign }}" onChange="{{ flipDSign }}" label="Sign requests with a secret (X-WC-Signature header)" hint-size="340px,20px"></x-import>
-                <span style="font: 400 12px/1.4 var(--wc-font-sans); color: var(--wc-text-muted)">HTTPS only. A non-2xx response retries 3 times over 15 minutes, then shows in the Activity log.</span>
-              </sc-if>
-
-              <sc-if value="{{ isAddEscalation }}" hint-placeholder-val="{{ false }}">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
-                  <div style="display: flex; flex-direction: column; gap: 6px">
-                    <span style="font: 600 13px/1 var(--wc-font-sans)">No response after</span>
-                    <span style="display: flex; align-items: center; gap: 10px"><x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Input" value="{{ dEscDays }}" onChange="{{ setDEscDays }}" width="80px" hint-size="80px,36px"></x-import><span style="font: 400 13px/1 var(--wc-font-sans); color: var(--wc-text-secondary)">days</span></span>
-                  </div>
-                  <div style="display: flex; flex-direction: column; gap: 6px">
-                    <span style="font: 600 13px/1 var(--wc-font-sans)">Escalate to</span>
-                    <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Select" value="{{ dEscTo }}" options="{{ apUserOptions }}" onChange="{{ setDEscTo }}" width="100%" hint-size="100%,36px"></x-import>
-                  </div>
-                </div>
-                <span style="display: flex; flex-direction: column; gap: 10px">
-                  <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Checkbox" checked="{{ dEscRemind }}" onChange="{{ flipDEscRemind }}" label="Remind the original approver 2 days before escalating" hint-size="340px,20px"></x-import>
-                  <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Checkbox" checked="{{ dEscNotify }}" onChange="{{ flipDEscNotify }}" label="Email Workflow Admins when escalated" hint-size="280px,20px"></x-import>
-                </span>
-                <span style="font: 400 12px/1.4 var(--wc-font-sans); color: var(--wc-text-muted)">The original link expires and a new one goes to the escalation contact.</span>
-              </sc-if>
-
-              <div style="display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 8px; background: var(--wc-gray-50); font: 400 12.5px/1.45 var(--wc-font-sans); color: var(--wc-text-secondary)">
-                <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Icon" name="info" size="{{ 15 }}" hint-size="15px,15px"></x-import>
-                <span>Submissions already in progress keep the published version. This step runs for new submissions after you publish.</span>
-              </div>
-            </div>
-          </sc-if>
-        </div>
-
-        <div style="flex: none; display: flex; align-items: center; gap: 10px; padding: 14px 24px; border-top: 1px solid var(--wc-divider)">
-          <span style="flex: 1"></span>
-          <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Button" variant="secondary" onClick="{{ closeAdd }}" hint-size="88px,40px">Cancel</x-import>
-          <sc-if value="{{ isAddConfig }}" hint-placeholder-val="{{ false }}">
-            <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Button" variant="primary" onClick="{{ confirmAdd }}" hint-size="110px,40px">{{ addCta }}</x-import>
-          </sc-if>
-        </div>
-      </div>
-    </div>
-  </sc-if>
-
   <sc-if value="{{ revokeOpen }}" hint-placeholder-val="{{ false }}">
     <div style="position: fixed; inset: 0; background: rgba(24,31,40,.34); display: grid; place-items: center; z-index: 50">
       <div style="width: 520px; max-width: calc(100vw - 40px); background: #fff; border-radius: 12px; box-shadow: 0 24px 48px -12px rgba(16,24,40,.24)">
@@ -1388,6 +1139,37 @@
     </div>
   </sc-if>
 
+  <sc-if value="{{ isPicking }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ cancelPick }}" style="position: fixed; inset: 0; background: rgba(24,31,40,.34); display: grid; place-items: center; z-index: 50">
+      <div onClick="{{ stopProp }}" style="width: 760px; max-width: calc(100vw - 40px); max-height: calc(100vh - 40px); display: flex; flex-direction: column; background: #fff; border-radius: 12px; box-shadow: 0 24px 48px -12px rgba(16,24,40,.24)">
+        <div style="flex: none; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 18px 24px; border-bottom: 1px solid var(--wc-divider)">
+          <span style="display: flex; flex-direction: column; gap: 4px">
+            <span style="font: 600 17px/1.3 var(--wc-font-sans)">Add step</span>
+            <span style="font: 400 12.5px/1.4 var(--wc-font-sans); color: var(--wc-text-muted)">Choose what this step does. You set it up right after, in place.</span>
+          </span>
+          <span onClick="{{ cancelPick }}" style="cursor: pointer; color: var(--wc-text-muted)"><x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Icon" name="x" size="{{ 18 }}" hint-size="18px,18px"></x-import></span>
+        </div>
+        <div style="flex: 1; min-height: 0; overflow: auto">
+<div style="padding: 20px 24px; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px">
+                        <sc-for list="{{ pickItems }}" as="it" hint-placeholder-count="6">
+                          <div onClick="{{ it.onClick }}" style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 8px; border: 1px solid var(--wc-border); background: #fff; cursor: pointer" style-hover="border-color: var(--wc-blue-500); background: var(--wc-blue-50)">
+                            <span style="flex: none; width: 30px; height: 30px; border-radius: 8px; background: var(--wc-gray-100); display: grid; place-items: center; color: var(--wc-gray-800)"><x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Icon" name="{{ it.icon }}" size="{{ 15 }}" hint-size="15px,15px"></x-import></span>
+                            <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+                              <span style="font: 600 10px/1 var(--wc-font-sans); letter-spacing: .06em; color: var(--wc-text-muted)">{{ it.kicker }}</span>
+                              <span style="font: 600 14px/1.3 var(--wc-font-sans)">{{ it.name }}</span>
+                              <span style="font: 400 12.5px/1.45 var(--wc-font-sans); color: var(--wc-text-muted)">{{ it.desc }}</span>
+                            </span>
+                          </div>
+                        </sc-for>
+                      </div>
+                              </div>
+        <div style="flex: none; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 14px 24px; border-top: 1px solid var(--wc-divider)">
+                        <x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Button" variant="secondary" onClick="{{ cancelPick }}" hint-size="88px,36px">Cancel</x-import>
+                        <span style="flex: 1 1 240px; font: 400 12.5px/1.45 var(--wc-font-sans); color: var(--wc-text-muted)">{{ pickNote }}</span>
+        </div>
+      </div>
+    </div>
+  </sc-if>
   <sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
     <div style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 60; display: flex; align-items: center; gap: 12px; width: 430px; max-width: calc(100vw - 40px); box-sizing: border-box; padding: 12px 12px 12px 16px; border-radius: 4px; background: #fff; border-left: 3px solid var(--wc-green-dot); box-shadow: 0 8px 24px rgba(16,24,40,.12), 0 0 0 1px rgba(16,24,40,.04); color: var(--wc-text); font: 400 14px/1.45 var(--wc-font-sans)">
       <span style="flex: none; display: flex; color: var(--wc-green-dot)"><x-import component-from-global-scope="WebCommanderDesignSystem_d41e75.Icon" name="circle-check" size="{{ 20 }}" hint-size="20px,20px"></x-import></span>
@@ -1468,8 +1250,10 @@ const STEP_DEFS = [
 ];
 const STEP_TYPES = [
   { id: 'approval', group: 'Approval', icon: 'pen-line', name: 'Sign-off', desc: 'Someone approves or declines from a secure link.' },
-  { id: 'email', group: 'Messages', icon: 'mail', name: 'Send email', desc: 'Email the applicant, approver, team or an address on the submission.' },
-  { id: 'document', group: 'Documents', icon: 'file-text', name: 'Generate document', desc: 'Create a PDF or Word copy from the document template.' },
+  { id: 'reminder', group: 'Messages', icon: 'bell-ring', name: 'Reminders', desc: 'Follow up with the approver until they respond or the link expires.' },
+  { id: 'email', group: 'Messages', icon: 'mail', name: 'Emails', desc: 'Email the applicant, approver, team or an address on the submission.' },
+  { id: 'document', group: 'Documents', icon: 'file-text', name: 'Document', desc: 'The printable record of a submission and its sign-off, as PDF or Word.' },
+  { id: 'statuses', group: 'Record', icon: 'circle-dot', name: 'Statuses', desc: 'The stages a submission moves through, from submitted to closed.' },
   { id: 'field', group: 'Record', icon: 'pencil-line', name: 'Update field', desc: 'Write a value back to the submission, such as sign_off_status.' },
   { id: 'status', group: 'Record', icon: 'circle-dot', name: 'Change status', desc: 'Move the submission to another status.' },
   { id: 'wait', group: 'Timing', icon: 'hourglass', name: 'Wait', desc: 'Pause for a number of days before the next step runs.' },
@@ -1658,6 +1442,56 @@ class Component extends DCLogic {
     const def = allDefs.find((d) => d.id === st.step) || STEP_DEFS[0];
     const curCustom = def.custom;
     const yn = (b) => (b ? 'Yes' : 'No');
+    const picking = !!st.pickOpen;
+    const pickItems = STEP_TYPES.map((t) => ({ ...t, kicker: t.group.toUpperCase(), onClick: () => {
+      const builtIn = { email: ['emails', 'Emails added. Select an email to edit it, then publish.'], approval: ['signoff', 'Sign-off added. Set it up below, then publish.'], reminder: ['reminders', 'Reminders added. Set them up below, then publish.'], document: ['document', 'Document added. Set it up below, then publish.'], statuses: ['statuses', 'Statuses added. Set them up below, then publish.'] }[t.id];
+      if (builtIn) {
+        const [sid, msg] = builtIn;
+        if (st.order.includes(sid)) { this.setState({ step: sid, pickOpen: false }); return; }
+        const order = st.order.slice();
+        const ai = order.indexOf(st.addAfter);
+        order.splice(ai < 0 ? order.length : ai + 1, 0, sid);
+        this.setState({ order, step: sid, pickOpen: false, dirty: true });
+        this.flash(msg);
+        return;
+      }
+      const id = `c${Date.now()}`;
+      const order = st.order.slice();
+      const ai = order.indexOf(st.addAfter);
+      order.splice(ai < 0 ? order.length : ai + 1, 0, id);
+      this.setState({ custom: [...st.custom, { id, type: t.id, cfg: { ...draftFor(t.id) } }], order, step: id, pickOpen: false, dirty: true });
+      this.flash(`${t.name} added. Set it up below, then publish.`);
+    } }));
+    const cval = (e) => (e && e.target ? e.target.value : e);
+    const cset = (k) => (e) => { const v = cval(e); this.setState((s) => ({ dirty: true, custom: s.custom.map((c) => (c.id === s.step ? { ...c, cfg: { ...c.cfg, [k]: v } } : c)) })); };
+    const cflip = (k) => () => this.setState((s) => ({ dirty: true, custom: s.custom.map((c) => (c.id === s.step ? { ...c, cfg: { ...c.cfg, [k]: !c.cfg[k] } } : c)) }));
+    const ctier = (i, k) => (e) => { const v = cval(e); this.setState((s) => ({ dirty: true, custom: s.custom.map((c) => (c.id === s.step ? { ...c, cfg: { ...c.cfg, tiers: (c.cfg.tiers || []).map((t, j) => (j === i ? { ...t, [k]: v } : t)) } } : c)) })); };
+    const fSel = (label, desc, k, options) => ({ label, desc, isSelect: true, value: curCustom.cfg[k], options, onChange: cset(k) });
+    const fTxt = (label, desc, k) => ({ label, desc, isText: true, value: curCustom.cfg[k] || '', onChange: cset(k) });
+    const fNum = (label, desc, k, suffix) => ({ label, desc, isNumber: true, value: curCustom.cfg[k], suffix, onChange: cset(k) });
+    const fSw = (label, desc, k) => ({ label, desc, isSwitch: true, checked: !!curCustom.cfg[k], onFlip: cflip(k) });
+    const statusOpts = WF_STATUSES.concat(st.extraStatuses.map((x) => x.name));
+    const moveOpts = statusOpts.concat(['Withdrawn']);
+    const customFields = !curCustom ? [] : [fTxt('Step name', 'Shown in the steps list and Activity log', 'name'), fSel('Runs when', 'The status that starts this step', 'when', statusOpts)].concat(({
+      approval: (f) => [fSel('Who approves', 'Where the approver comes from', 'apSrc', ['Field on the submission', 'Specific user', 'User group'])]
+        .concat(f.apSrc === 'Field on the submission' ? [fSel('Approver email field', 'External approver, no login. Gets a single-use secure link.', 'apField', FIELDS.filter((x) => /email/i.test(x)))]
+          : f.apSrc === 'Specific user' ? [fSel('User', 'Receives the secure link', 'apUser', ['Priya Raman', 'Tom Ellis', 'Grace Okafor'])]
+          : [fSel('Group', 'Members who can approve', 'apGroup', ['Judging panel', 'Shared Tables team']), fSel('Order', 'How group members are asked', 'apMode', ['One after another', 'All at once'])])
+        .concat([fNum('Link expiry', 'Days after the request is sent', 'expiry', 'days')])
+        .concat(f.apSrc === 'User group' ? [fSw('Approval limits', 'Route to a different group based on an amount on the record', 'limitsOn')] : [])
+        .concat(f.apSrc === 'User group' && f.limitsOn ? [fSel('Compare', 'Amount used for routing', 'limitField', ({ Orders: ['Order total', 'Item count'], Customers: ['Credit limit'] })[st.source] || ['Order total', 'Requested amount'])]
+          .concat((f.tiers || []).map((t, i, a) => ({ label: i === a.length - 1 ? 'Above that' : `Tier ${i + 1}`, desc: i === a.length - 1 ? 'Anything over the last limit' : 'Up to this amount ($)', isTier: true, hasMax: i < a.length - 1, max: t.max, setMax: ctier(i, 'max'), value: t.who, options: ['Team lead', 'Finance manager', 'Director', 'Judging panel'], onChange: ctier(i, 'who') }))) : []),
+      email: () => [fSel('Send to', 'Recipient', 'to', ['Applicant', 'Approver', 'Shared Tables team', 'Employer / RTO email']), fSel('Email', 'Template from the Emails step', 'template', ['New blank email'].concat(st.emails.map((e) => e.name))), fSw('Attach document', 'Latest generated PDF or Word file', 'attach')],
+      document: () => [fSw('PDF', 'Uses the layout from the Document step', 'pdf'), fSw('Word (.docx)', 'Named {reference}-{applicant_last_name}', 'word'), fSw('Attach to emails', 'Emails sent in the same status', 'attach')],
+      field: () => [fSel('Submission field', 'Written back to the Forms plugin so its list can filter by it', 'field', ['sign_off_status', 'judging_round', 'internal_note']), fTxt('Value', 'Text or a merge field, such as {status}', 'value')],
+      status: () => [fSel('Move to', 'Status the submission moves to', 'toStatus', moveOpts), fSw('Reason required', 'Logged in the record timeline', 'reasonReq')],
+      condition: (f) => [fSel('If field', 'Checked when this step runs', 'cField', FIELDS), fSel('Operator', 'Comparisons ignore letter case', 'cOp', COND_OPS)]
+        .concat(f.cOp === 'is empty' ? [] : [fTxt('Value', 'Compared with the field', 'cValue')])
+        .concat([fSel('Then move to', 'When the condition is met', 'cThen', moveOpts), fSel('Otherwise move to', 'When it is not', 'cElse', moveOpts)]),
+      webhook: () => [fSel('Method', 'HTTP method', 'method', ['POST', 'PUT']), fTxt('Endpoint URL', 'HTTPS only. Non-2xx responses retry 3 times.', 'url'), fSel('Payload', 'Sent as JSON', 'payload', ['Full submission', 'Status and reference only']), fSw('Sign requests', 'X-WC-Signature header with your secret', 'sign')],
+      escalation: () => [fNum('No response after', 'Days with no approver response', 'escDays', 'days'), fSel('Escalate to', 'Receives a new secure link', 'escTo', ['Priya Raman', 'Tom Ellis', 'Grace Okafor']), fSw('Remind first', 'One reminder 2 days before escalating', 'escRemind'), fSw('Notify Workflow Admins', 'Email when escalated', 'escNotify')],
+      wait: () => [fNum('Wait for', 'Then continue at 9:00am Melbourne time', 'days', 'days'), fSw('Stop if the approver responds', 'Skips the rest of this branch', 'cancelOnReply')],
+    })[curCustom.type](curCustom.cfg));
     const customRows = !curCustom ? [] : [{ label: 'Runs when', desc: 'The status that starts this step', value: `Status becomes ${curCustom.cfg.when}` }].concat(({
       approval: (f) => [
         { label: 'Approver', desc: 'Where the approver comes from', value: f.apSrc },
@@ -1897,7 +1731,7 @@ class Component extends DCLogic {
         this.setState({ dirty: false, extra: st.extra.map((x, k) => (k === xi ? { ...x, status: 'Active', meta: 'v1 · published just now' } : x)) });
         this.flash(`${st.extra[xi].name} published. New submissions now run through it.`);
       },
-      addStep: () => this.setState({ addOpen: true, addStage: 'pick', addType: null, editingId: null, draft: {} }),
+      addStep: () => this.setState((s) => ({ pickOpen: true, addAfter: s.step })),
       dLimitsOn: !!dr.limitsOn, flipDLimitsOn: dflip('limitsOn'), dLimitField: dr.limitField, setDLimitField: dset('limitField'),
       limitFieldOptions: ({ Orders: ['Order total', 'Item count'], Customers: ['Credit limit'] })[st.source] || ['Order total', 'Requested amount'],
       limitGroupOptions: ['Team lead', 'Finance manager', 'Director', 'Judging panel'],
@@ -1910,6 +1744,9 @@ class Component extends DCLogic {
           iconBg: on ? 'var(--wc-blue-500)' : 'var(--wc-gray-100)', iconFg: on ? '#fff' : 'var(--wc-gray-800)' };
       }),
       stepIcon: def.icon, stepTitle: def.title, stepDesc: def.desc,
+      isPicking: picking, pickItems, cancelPick: () => this.setState({ pickOpen: false }), stopProp: (e) => e.stopPropagation(),
+      pickNote: `The new step is added after ${(allDefs.find((d) => d.id === st.addAfter) || allDefs[allDefs.length - 1]).label}.`,
+      customFields,
       isTrigger: st.step === 'trigger', isSignoff: st.step === 'signoff', isReminders: st.step === 'reminders', isEmails: st.step === 'emails', isDocument: st.step === 'document', isStatuses: st.step === 'statuses',
 
       createFormOptions: linkedNames.length ? linkedNames : [FORM],
