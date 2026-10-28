@@ -1,8 +1,0 @@
-:root{
-  --wc-radius-xs:4px;   /* checkboxes, small chips */
-  --wc-radius-sm:6px;   /* inputs, selects, thumbnails */
-  --wc-radius-md:8px;   /* cards, banners, option tiles */
-  --wc-radius-lg:12px;  /* page panels, modals */
-  --wc-radius-nav:50%; /* sidebar nav chip — full circle */
-  --wc-radius-pill:999px;
-}
